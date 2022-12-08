@@ -14,12 +14,12 @@ public class Item {
   // public static void main(String[] args);
  
   //building the constructor 
-  public Item (String name, String type, int locationX, int locationY, ) { 
+  public Item (String name, String type, int locationX, int locationY ) { 
     if (name != null) { this.name = name; }
     this.type = type;
     this.locationX = locationX;
     this.locationY = locationY;
-    
+    // make a parameter for clue 
       
 }
 
@@ -37,21 +37,22 @@ public class Item {
   
   //this will inspect an item grabbed and will notify the player if it is useful or not
   public void inspectItem(String item){
-  if (users_input == "inspect rug") {
+    String person_res= users_input.nextLine();
+  if (person_res == "inspect rug") {
     System.out.println("There is a paper under the rug with a password.");
-  } else if (users_input == "inspect lamp"){
+  } else if (person_res == "inspect lamp"){
     System.out.println("There is a paper under the rug with a username.");
-  } else if (users_input == "inspect desk"){
+  } else if (person_res == "inspect desk"){
     System.out.println("There is a computer monitor here and a lamp. A bookbag is leaning against the desk. This desk has drawers.");
-  } else if (users_input == "inspect drawers"){
+  } else if (person_res == "inspect drawers"){
     System.out.println("Hmmmm... There appears to be nothing here.");
-  } else if (users_input == "inspect computer"){
+  } else if (person_res == "inspect computer"){
     System.out.println("Looks like we need a username and password to use the computer. Could there be something important on it...?");
-} else if (users_input == "inspect bookbag"){
+} else if (person_res == "inspect bookbag"){
     System.out.println("You look inside the bookbag. There appears to be nothing here.");
-  } else if (users_input == "inspect trashcan"){
+  } else if (person_res == "inspect trashcan"){
     System.out.println("There is a thumb drive here...");
-}  else if (users_input == "inspect bookcase"){
+}  else if (person_res == "inspect bookcase"){
     System.out.println("There is a key here...");
   } else{
     System.out.println("Is there anything else you'd like to inspect?");

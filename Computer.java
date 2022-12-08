@@ -26,12 +26,12 @@ public class Computer extends Technology {
   computerClue.liftItems();
 **/ 
   
-  public boolean checkCorrectpassword(){
-    /** The purpose of this method is that once the user inputs a password, the string will be passed here to be checked. I plan on implemented an if else statement so that if the password inputted by the user matches the password we made, then they get access to the computer. Only when the username goes through the same process ^ 
-    **/
+//   public boolean checkCorrectpassword(){
+//     /** The purpose of this method is that once the user inputs a password, the string will be passed here to be checked. I plan on implemented an if else statement so that if the password inputted by the user matches the password we made, then they get access to the computer. Only when the username goes through the same process ^ 
+//     **/
 
-}
-  public boolean checkCorrectUsername(){
+// }
+//   public boolean checkCorrectUsername(){
     
-  }
-}
+//   }
+ }
