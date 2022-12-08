@@ -1,4 +1,5 @@
 import java.util.Scanner; 
+import java.util.ArrayList;
 
 public class Item {
   
@@ -7,8 +8,9 @@ public class Item {
   public String type;
   private int locationX;
   private int locationY;
-  private Hashtable<String, Boolean> storage;
+  private ArrayList <String> storage ;
   static Scanner usersInput = new Scanner(System.in);
+  private has_clue 
   // public static void main(String[] args);
  
   //building the constructor 
