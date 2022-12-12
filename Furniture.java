@@ -1,5 +1,5 @@
-import java.io.*;
-import java.util.*;
+// import java.io.*;
+// import java.util.*;
 
 // public class Furniture {
 //   public String name;  // can make private and use accessors and manipulators y

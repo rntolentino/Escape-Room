@@ -11,7 +11,7 @@ public class Player {
   /**
   * Constructor 
   */
-  public Player (String name, String color) {
+  public Player (String name) {
     this.name = name;
     this.locationX = 0 ;
     this.locationY= 0 ;
@@ -111,7 +111,7 @@ public class Player {
 
   // Main
   public static void main(String[]args){
-    Player pet  = new Player("Jochy", "blue");
+    Player pet  = new Player("Jochy");
     System.out.println(pet);
     pet.grab("star");
     pet.grab("banana");
