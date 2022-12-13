@@ -27,6 +27,10 @@ public class Player {
     this.name = name2;
   }
   
+  public String getName(){
+    return this.name;
+  }
+  
   // Methods 
   /**
   * Creates the list of clues that are relevant to the game.
