@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class EscapeRoom {
   //attributes
   private Boolean exit;
+  public String name;
   static Scanner userInput = new Scanner(System.in);
   
   public void startGame() {
@@ -15,11 +16,19 @@ public class EscapeRoom {
     String name = userInput.nextLine();  
     System.out.println("Hello, " + name);  
     EscapeRoom.addPlayer(new Player (name)); //Creating instance of player in EscapeRoom
-    System.out.println("You are standing in the center of a room above a rug. There is a door to the north. A bookcase to the south. A window to the west. And a desk to the east.");  
+    System.out.println("You are standing in the center of a room above a rug. There is a door to the north. A bookcase to the south. A window to the west. And a desk to the east."); 
+    String response = userInput.nextLine();  
+
+    if(response.contains ("walk")){
+        p.walk("north");
+
+    }
+
 }
   
   private static void addPlayer(Player p) {
-    //System.out.println("Adding player...");  
+    //System.out.println("Adding player...");
+    Player user = p;
     p.getName();
 
 }
@@ -34,6 +43,7 @@ public class EscapeRoom {
 
 public void endGame(boolean exit) {
     if(exit = true)  {
+    userInput.close();
     System.out.println("You have successfully escaped!"); 
     System.out.println("GAME OVER");
     }
