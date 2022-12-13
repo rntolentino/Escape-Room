@@ -10,9 +10,7 @@ public class Technology {
   
 // methods
   public String moveDirections(int locationX, int locationY){
-    /**
-the goal here is to be able to give location to the items in item.java in the escape room. This method is a bit confusing since we would probably need to do some inheritance or something that'd allow us to connect the classes alltogether. 
-    **/
+    
   }
 
   public String liftItems(String Items, String storage){
