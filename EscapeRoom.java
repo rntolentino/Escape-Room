@@ -10,7 +10,6 @@ public class EscapeRoom {
   public EscapeRoom(){
     this.name = null;
     this.user = EscapeRoom.addPlayer(new Player (this.name)); //Creating instance of player in EscapeRoom
-
   }
 
   public void startGame() {
@@ -60,7 +59,6 @@ public class EscapeRoom {
     p.getName();
     return user; 
   }
-
 
   
 // private static void addItem(Item b) {
