@@ -15,12 +15,22 @@ public class EscapeRoom {
     
     String name = userInput.nextLine();  
     System.out.println("Hello, " + name);  
-    addPlayer(new Player(name, "blue"));
-
+    addPlayer(new Player(name));
     System.out.println("You are standing in the center of a room above a rug. There is a door to the north. A bookcase to the south. A window to the west. And a desk to the east.");  
   }
   
-  public void endGame(boolean exit) {
+  private void addPlayer(Player player) {
+    System.out.println("Adding player...");  
+    addPlayer(new Player(name));
+    System.out.println("You are standing in the center of a room above a rug. There is a door to the north. A bookcase to the south. A window to the west. And a desk to the east.");  
+}
+
+  public String getName(){
+    return this.name;
+}
+
+
+public void endGame(boolean exit) {
     if(exit = true)  {
     System.out.println("You have successfully escaped!"); 
     System.out.println("GAME OVER");
