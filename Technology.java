@@ -3,14 +3,14 @@ import java.util.*;
 
 public class Technology {
   public String name;// can make private and use accessors and manipulators y
-  private int location_x;
-  private int location_y; 
+  private String location_x;
+  private String location_y; 
   private String storage; 
   
   
 // methods
-  public String moveDirections(int locationX, int locationY){
-    
+  public void moveDirections(String locationX, String locationY){
+    if(this.name.toLowerCase()== Computer); 
   }
 
   public String liftItems(String Items, String storage){
