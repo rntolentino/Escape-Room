@@ -7,10 +7,8 @@ public class Furniture {
     private String location_Y;
     private String storage;
     
-    public Furniture (String name, int location_x, int location_y) {
+    public Furniture (String name) {
         this.name = name;
-        // this.location_X = location_x;
-        // this.location_Y= location_y;
         
       }
 
@@ -29,25 +27,33 @@ public class Furniture {
     This method is a bit confusing since we would probably need to do some inheritance or something 
     that'd allow us to connect the classes alltogether. 
     **/
-    public void directions(String locationX, String locationY){
-        if(this.name.toLowerCase()=="door"){
+    public void location(){
+        if(this.name.toLowerCase().contains("door")){
             this.location_X = "north" ;
             this.location_Y= "0";
+            System.out.println( "You have hit the door that has a pin-pad on it , it is located in the "+location_X + " part of the room" );
         }
-        if (this.name.toLowerCase()=="bookcase" ){
+        if (this.name.toLowerCase().contains("bookcase") ){
           this.location_X = "0" ;
-          this.location_Y= "north";
+          this.location_Y= "south";
+          System.out.println( "You have hit the bookcase that has a safe, it is located in the "+ location_Y + " part of the room" );
         }
-        if (this.name.toLowerCase()=="window" ){
+        if (this.name.toLowerCase().contains("window")){
           this.location_X = "east" ;
           this.location_Y= "0";
+          System.out.println("You have hit the window, it is located in the "+ location_X + " part of the room" );
 
         }
-        if (this.name.toLowerCase()== "lamp"|| this.name.toLowerCase()== "desk"){
+        if (this.name.toLowerCase().contains("lamp")|| this.name.toLowerCase().contains("desk")){
           this.location_X = "0" ;
           this.location_Y= "west";
+          System.out.println( "You have hit the desk that contains a lamp, it is located in the "+location_Y + " part of the room" );
         }
         }
+    
+    
+
+    
 
 
         
@@ -56,6 +62,13 @@ public class Furniture {
  
   
   public static void main(String args[]){
-        
+    Furniture desk = new Furniture("desk");
+    desk.location();
+    Furniture window = new Furniture("window");
+    window.location();
+    Furniture bookcase = new Furniture("bookcase");
+    bookcase.location();
+    Furniture door = new Furniture("door");
+    door.location();
     }
 }
