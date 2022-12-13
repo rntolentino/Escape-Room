@@ -80,8 +80,6 @@ public class Player {
    * @return A boolean, true signifies Player has moved
    */
   public boolean walk(String direction){
-    System.out.println(direction.toLowerCase());
-    System.out.println(locationY);
     if (direction.toLowerCase().contains("walk north") || direction.toLowerCase().contains("north")){
       this.locationY +=1;
       System.out.println(locationY);
