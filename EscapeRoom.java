@@ -79,8 +79,11 @@ public void endGame(boolean exit) {
   }
   
   public void resetGame(String userInput) {
-    if (userInput == "reset") {
-      startGame();
+    if (userInput.contains("reset")) {
+      EscapeRoom room2 = new EscapeRoom();
+      room2.startGame();
+      user.undo();
+      //startGame();
     }
   }
 
