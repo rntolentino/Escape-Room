@@ -10,31 +10,49 @@ public class EscapeRoom {
   public EscapeRoom(){
     this.name = null;
     this.user = EscapeRoom.addPlayer(new Player (this.name)); //Creating instance of player in EscapeRoom
-    
-    
+
   }
-  
+
   public void startGame() {
     System.out.println("-----------------------------------");
     System.out.println("         Java Escape Room");
     System.out.println("-----------------------------------");
     System.out.println(" ");
     System.out.println("Welcome to our Escape Room! What is you name?");
-    
-    this.name = userInput.nextLine();  
-    System.out.println("Hello, " + name);  
-    // EscapeRoom.addPlayer(new Player (name)); //Creating instance of player in EscapeRoom
-    System.out.println("You are standing in the center of a room above a rug. There is a door to the north. A bookcase to the south. A window to the west. And a desk to the east."); 
-    String response = userInput.nextLine();  
 
-    if(response.toLowerCase().contains("walk")){
-      user.walk(response);
-    // if(response.contains ("inspect")){
-    //   //user.walk(response);
-    // if(response.contains ("use")){
-    //   //user.walk(response);
-    }
+    do {
+      this.name = userInput.nextLine();  
+      System.out.println("Hello, " + name);  
+      // EscapeRoom.addPlayer(new Player (name)); //Creating instance of player in EscapeRoom
+      System.out.println("You are standing in the center of a room above a rug. There is a door to the north. A bookcase to the south. A window to the west. And a desk to the east."); 
+      String response = userInput.nextLine();  
+
+      if(response.toLowerCase().contains("walk")){
+        user.walk(response);
+        
+      }
+      // if(response.contains ("inspect")){
+      //   //user.walk(response);
+      // if(response.contains ("use")){
+      //   //user.walk(response);
+
+      if (userInput.equals("WIN") || userInput.equals("LOSE") ){
+        exit = false;
+      }
+    } while (exit);​
+      // Tidy up
+      userInput.close();
+      
+      // Once you exit the loop, you may need to deal with various possible stopping conditions
+      if (userInput.equals("WIN")) {
+        System.out.println("Yay, you won!");
+      } 
+      else (userInput.equals("LOSE")) {
+        System.out.println("Better luck next time.");
+      }
   }
+
+  // public userLocation()
   
   private static Player addPlayer(Player p) {
     //System.out.println("Adding player...");

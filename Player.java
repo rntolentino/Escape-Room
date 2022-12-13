@@ -92,12 +92,12 @@ public class Player {
     } 
     if (direction.toLowerCase().contains("walk west") || direction.toLowerCase().contains("west")){
       this.locationX -=1;
-      System.out.println(locationY);
+      System.out.println(locationX);
       return(true);
     }
     if (direction.toLowerCase().contains("walk east") || direction.toLowerCase().contains("east")){
       this.locationX += 1;
-      System.out.println(locationY);
+      System.out.println(locationX);
       return(true);
     }
     else{
