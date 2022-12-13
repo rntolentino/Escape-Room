@@ -5,6 +5,7 @@ public class EscapeRoom {
   private Boolean exit;
   public String name;
   Scanner userInput = new Scanner(System.in);
+
   private Player user;
   boolean stillPlaying = true;
   String userResponse = "";
@@ -13,7 +14,7 @@ public class EscapeRoom {
   public EscapeRoom(){
     this.name = null;
     this.user = EscapeRoom.addPlayer(new Player (this.name)); //Creating instance of player in EscapeRoom
-  }
+  
 
   public void startGame() {
     System.out.println("-----------------------------------");
@@ -41,7 +42,7 @@ public class EscapeRoom {
       // if(response.contains ("use")){
       //   //user.walk(response);
 
-      if (userInput.equals("WIN") || userInput.equals("LOSE") ){
+      if (userResponse.equals("Reset") || userResponse.equals("LOSE")){
         stillPlaying = false;
       }
     } while (stillPlaying);​
@@ -55,6 +56,7 @@ public class EscapeRoom {
       else if (userInput.equals("LOSE")) {
         System.out.println("Better luck next time.");
       }
+    }
   }
 
   //public userLocation()
@@ -66,20 +68,20 @@ public class EscapeRoom {
     return user; 
   }
   
-// private static void addItem(Item b) {
-//     System.out.println("Adding item...");  
-//     b.getName();
+  // private static void addItem(Item b) {
+  //     System.out.println("Adding item...");  
+  //     b.getName();
 
-// }
+  // }
 
 
-public void endGame(boolean exit) {
-    if(exit = true)  {
-    userInput.close();
-    System.out.println("You have successfully escaped!"); 
-    System.out.println("GAME OVER");
+  public void endGame(boolean exit) {
+    if (exit = true){
+      userInput.close();
+      System.out.println("You have successfully escaped!"); 
+      System.out.println("GAME OVER");
+      }
     }
-  }
   
   public void resetGame(String userInput) {
     if (userInput.contains("reset")) {
