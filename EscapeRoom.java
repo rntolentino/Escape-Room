@@ -5,6 +5,14 @@ public class EscapeRoom {
   private Boolean exit;
   public String name;
   static Scanner userInput = new Scanner(System.in);
+  private Player user;
+
+  public EscapeRoom(){
+    this.name = null;
+    this.user = EscapeRoom.addPlayer(new Player (this.name)); //Creating instance of player in EscapeRoom
+    
+    
+  }
   
   public void startGame() {
     System.out.println("-----------------------------------");
@@ -13,25 +21,30 @@ public class EscapeRoom {
     System.out.println(" ");
     System.out.println("Welcome to our Escape Room! What is you name?");
     
-    String name = userInput.nextLine();  
+    this.name = userInput.nextLine();  
     System.out.println("Hello, " + name);  
-    EscapeRoom.addPlayer(new Player (name)); //Creating instance of player in EscapeRoom
+    // EscapeRoom.addPlayer(new Player (name)); //Creating instance of player in EscapeRoom
     System.out.println("You are standing in the center of a room above a rug. There is a door to the north. A bookcase to the south. A window to the west. And a desk to the east."); 
     String response = userInput.nextLine();  
 
     if(response.contains ("walk")){
-        p.walk("north");
+      user.walk(response);
+    if(response.contains ("inspect")){
+      //user.walk(response);
+    if(response.contains ("use")){
+      //user.walk(response);
+  
 
     }
-
-}
+  }
   
-  private static void addPlayer(Player p) {
+  private static Player addPlayer(Player p) {
     //System.out.println("Adding player...");
     Player user = p;
     p.getName();
+    return user; 
+  }
 
-}
 
   
 // private static void addItem(Item b) {
