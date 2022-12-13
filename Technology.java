@@ -2,11 +2,11 @@ import java.io.*;
 import java.util.*;
 
 public class Technology {
-  public String Computer;  // can make private and use accessors and manipulators y
-  public String Pinpad;
-  private String Pin; 
-  private String Username;
-  private String Userpassword; 
+  public String computer = "Enter username and password: "; // can make private and use accessors and manipulators y
+  public String pinpad = "Enter pin: ";
+  public int pinEscape = 0102;
+  public int locationX;
+  public int locationY;
   
 // methods
   public String moveDirections(int locationX, int locationY){
