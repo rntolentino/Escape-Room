@@ -5,8 +5,8 @@ public class Furniture {
     public String name;  // can make private and use accessors and manipulators y
     private String location_X;
     private String location_Y;
-    private String storage;
-    
+    private ArrayList<String> storage = new ArrayList<String>();
+
     public Furniture (String name) {
         this.name = name;
         
@@ -49,6 +49,11 @@ public class Furniture {
           this.location_Y= "west";
           System.out.println( "You have hit the desk that contains a lamp and computer. There is a trashcan, with a thumbdrive inside, next to the desk. These things are located in the "+location_Y + " part of the room" );
         }
+      }
+    public void String (clue){
+
+
+    }
   
         }
     
