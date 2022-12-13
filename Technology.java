@@ -9,8 +9,8 @@ public class Technology {
   
   
 // methods
-  public void moveDirections(String locationX, String locationY){
-    if(this.name.toLowerCase()== Computer); 
+  public void moveDirections(String computer, String locationX, String locationY){
+    if(this.name.toLowerCase()== computer); 
   }
 
   public String liftItems(String Items, String storage){
