@@ -50,12 +50,22 @@ public class Furniture {
           System.out.println( "You have hit the desk that contains a lamp and computer. There is a trashcan, with a thumbdrive inside, next to the desk. These things are located in the "+location_Y + " part of the room" );
         }
       }
-    public void String (clue){
-
+    public void stores (){
+      if (this.name.toLowerCase().contains("inspect lamp")){
+        System.out.println("There is a paper under the lamp");
+      } 
+      if (this.name.toLowerCase().contains("inspect computer")){
+        System.out.println("There is a login screen");
+      }
+      if (this.name.toLowerCase().contains("inspect trashcan")){
+        System.out.println("There is a thumbdrive inside the trashcan");
+      }
+      if (this.name.toLowerCase().contains("inspect rug ")){
+        
+      }
 
     }
   
-        }
     
       
 

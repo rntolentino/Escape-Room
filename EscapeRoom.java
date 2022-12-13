@@ -90,7 +90,7 @@ public class EscapeRoom {
     }
   
   public void resetGame(String userInput) {
-    if (userInput.contains("reset")) {
+    if (userInput.toLowerCase().contains("reset")) {
       EscapeRoom room2 = new EscapeRoom();
       room2.startGame();
       user.undo();
