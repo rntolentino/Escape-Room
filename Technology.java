@@ -4,7 +4,9 @@ import java.util.*;
 public class Technology {
   public String Computer;  // can make private and use accessors and manipulators y
   public String Pinpad;
-  
+  private String Pin; 
+  private String Username;
+  private String Userpassword; 
   
 // methods
   public String moveDirections(int locationX, int locationY){
