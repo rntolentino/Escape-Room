@@ -27,12 +27,13 @@ public class EscapeRoom {
     System.out.println("You are standing in the center of a room above a rug. There is a door to the north. A bookcase to the south. A window to the west. And a desk to the east."); 
     String response = userInput.nextLine();  
 
-    if(response.contains ("walk")){
+    if(response.contains("walk")){
+      System.out.println(response);
       user.walk(response);
-    if(response.contains ("inspect")){
-      //user.walk(response);
-    if(response.contains ("use")){
-      //user.walk(response);
+    // if(response.contains ("inspect")){
+    //   //user.walk(response);
+    // if(response.contains ("use")){
+    //   //user.walk(response);
   
 
     }

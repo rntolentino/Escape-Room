@@ -80,21 +80,26 @@ public class Player {
    * @return A boolean, true signifies Player has moved
    */
   public boolean walk(String direction){
-    if (direction.toLowerCase() == "walk north"|| direction.toLowerCase()=="north"){
+    System.out.println(direction.toLowerCase());
+    System.out.println(locationY);
+    if (direction.toLowerCase().contains("walk north") || direction.toLowerCase().contains("north")){
       this.locationY +=1;
       System.out.println(locationY);
       return(true);
     }
-    if (direction.toLowerCase() == "walk south"|| direction.toLowerCase()=="south"){
+    if (direction.toLowerCase().contains( "walk south")|| direction.toLowerCase().contains("south")){
       this.locationY -=1;
+      System.out.println(locationY);
       return(true);
     } 
-    if (direction.toLowerCase() == "walk west"|| direction.toLowerCase()=="west"){
+    if (direction.toLowerCase().contains("walk west") || direction.toLowerCase().contains("west")){
       this.locationX -=1;
+      System.out.println(locationY);
       return(true);
     }
-    if (direction.toLowerCase() == "walk east"|| direction.toLowerCase()=="east"){
+    if (direction.toLowerCase().contains("walk east") || direction.toLowerCase().contains("east")){
       this.locationX += 1;
+      System.out.println(locationY);
       return(true);
     }
     else{
