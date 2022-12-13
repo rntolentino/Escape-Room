@@ -14,7 +14,7 @@ public class EscapeRoom {
   public EscapeRoom(){
     this.name = null;
     this.user = EscapeRoom.addPlayer(new Player (this.name)); //Creating instance of player in EscapeRoom
-  
+  }
 
   public void startGame() {
     System.out.println("-----------------------------------");
@@ -24,8 +24,8 @@ public class EscapeRoom {
     System.out.println("Welcome to our Escape Room! What is you name?");
 
     do {
-      System.out.println("You are still playing. Follow the instructions if you want to win/lose...");
-      userResponse = userInput.nextLine().toUpperCase();
+      // System.out.println("You are still playing. Follow the instructions if you want to win/lose...");
+      // userResponse = userInput.nextLine().toUpperCase();
       
       this.name = userInput.nextLine();  
       System.out.println("Hello, " + name);  
@@ -42,12 +42,13 @@ public class EscapeRoom {
       // if(response.contains ("use")){
       //   //user.walk(response);
 
-      if (userResponse.equals("Reset") || userResponse.equals("LOSE")){
+      
+      if (userInput.equals("RESET") || userInput.equals("LOSE") ){
+
         stillPlaying = false;
       }
-    } while (stillPlaying);​
-      // Tidy up
-      userInput.close();
+
+      
       
       // Once you exit the loop, you may need to deal with various possible stopping conditions
       if (userInput.equals("WIN")) {
@@ -56,8 +57,14 @@ public class EscapeRoom {
       else if (userInput.equals("LOSE")) {
         System.out.println("Better luck next time.");
       }
-    }
+    
+    
+    } while (stillPlaying);
+    //   // Tidy up
+    //   userInput.close();
+    // }
   }
+
 
   //public userLocation()
   
