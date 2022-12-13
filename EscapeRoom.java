@@ -4,8 +4,7 @@ public class EscapeRoom {
   //attributes
   private Boolean exit;
   static Scanner userInput = new Scanner(System.in);
-
-
+  
   public void startGame() {
     System.out.println("-----------------------------------");
     System.out.println("         Java Escape Room");
@@ -15,19 +14,22 @@ public class EscapeRoom {
     
     String name = userInput.nextLine();  
     System.out.println("Hello, " + name);  
-    addPlayer(new Player(name));
+    EscapeRoom.addPlayer(new Player (name)); //Creating instance of player in EscapeRoom
     System.out.println("You are standing in the center of a room above a rug. There is a door to the north. A bookcase to the south. A window to the west. And a desk to the east.");  
-  }
+}
   
-  private void addPlayer(Player player) {
-    System.out.println("Adding player...");  
-    addPlayer(new Player(name));
-    System.out.println("You are standing in the center of a room above a rug. There is a door to the north. A bookcase to the south. A window to the west. And a desk to the east.");  
+  private static void addPlayer(Player p) {
+    //System.out.println("Adding player...");  
+    p.getName();
+
 }
 
-  public String getName(){
-    return this.name;
-}
+  
+// private static void addItem(Item b) {
+//     System.out.println("Adding item...");  
+//     b.getName();
+
+// }
 
 
 public void endGame(boolean exit) {
@@ -52,6 +54,8 @@ public void endGame(boolean exit) {
   public static void main(String[] args) {
     EscapeRoom room = new EscapeRoom();
     room.startGame();
+
+
     //room.addPlayer(new Player(name, "blue"));
 
     
