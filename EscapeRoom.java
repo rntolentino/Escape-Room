@@ -43,8 +43,7 @@ public class EscapeRoom {
       //   //user.walk(response);
 
       
-      if (userInput.equals("RESET") || userInput.equals("LOSE") ){
-
+      if (userInput.equals("reset") || userInput.equals("LOSE") ){
         stillPlaying = false;
       }
 
