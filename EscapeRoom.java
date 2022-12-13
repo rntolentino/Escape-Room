@@ -4,8 +4,11 @@ public class EscapeRoom {
   //attributes
   private Boolean exit;
   public String name;
-  static Scanner userInput = new Scanner(System.in);
+  Scanner userInput = new Scanner(System.in);
   private Player user;
+  boolean stillPlaying = true;
+  String userResponse = "";
+
 
   public EscapeRoom(){
     this.name = null;
@@ -20,6 +23,9 @@ public class EscapeRoom {
     System.out.println("Welcome to our Escape Room! What is you name?");
 
     do {
+      System.out.println("You are still playing. Follow the instructions if you want to win/lose...");
+      userResponse = userInput.nextLine().toUpperCase();
+      
       this.name = userInput.nextLine();  
       System.out.println("Hello, " + name);  
       // EscapeRoom.addPlayer(new Player (name)); //Creating instance of player in EscapeRoom
@@ -36,9 +42,9 @@ public class EscapeRoom {
       //   //user.walk(response);
 
       if (userInput.equals("WIN") || userInput.equals("LOSE") ){
-        exit = false;
+        stillPlaying = false;
       }
-    } while (exit);​
+    } while (stillPlaying);​
       // Tidy up
       userInput.close();
       
@@ -46,12 +52,12 @@ public class EscapeRoom {
       if (userInput.equals("WIN")) {
         System.out.println("Yay, you won!");
       } 
-      else (userInput.equals("LOSE")) {
+      else if (userInput.equals("LOSE")) {
         System.out.println("Better luck next time.");
       }
   }
 
-  // public userLocation()
+  //public userLocation()
   
   private static Player addPlayer(Player p) {
     //System.out.println("Adding player...");
@@ -59,7 +65,6 @@ public class EscapeRoom {
     p.getName();
     return user; 
   }
-
   
 // private static void addItem(Item b) {
 //     System.out.println("Adding item...");  
