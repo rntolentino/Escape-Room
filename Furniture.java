@@ -28,7 +28,7 @@ public class Furniture {
     that'd allow us to connect the classes alltogether. 
     **/
     public void location(){
-        if(this.name.toLowerCase().contains("door")){
+        if(this.name.toLowerCase().contains("door")|| this.name.toLowerCase().contains("pin-pad")){
             this.location_X = "north" ;
             this.location_Y= "0";
             System.out.println( "You have hit the door that has a pin-pad on it , it is located in the "+location_X + " part of the room" );
@@ -44,14 +44,15 @@ public class Furniture {
           System.out.println("You have hit the window, it is located in the "+ location_X + " part of the room" );
 
         }
-        if (this.name.toLowerCase().contains("lamp")|| this.name.toLowerCase().contains("desk")){
+        if (this.name.toLowerCase().contains("lamp")|| this.name.toLowerCase().contains("desk")|| this.name.toLowerCase().contains("computer")|| this.name.toLowerCase().contains("trashcan")){
           this.location_X = "0" ;
           this.location_Y= "west";
-          System.out.println( "You have hit the desk that contains a lamp, it is located in the "+location_Y + " part of the room" );
+          System.out.println( "You have hit the desk that contains a lamp and computer. There is a trashcan, with a thumbdrive inside, next to the desk. These things are located in the "+location_Y + " part of the room" );
         }
+  
         }
     
-    
+      
 
     
 
@@ -70,5 +71,13 @@ public class Furniture {
     bookcase.location();
     Furniture door = new Furniture("door");
     door.location();
+    Furniture pinpad = new Furniture("pin-pad");
+    pinpad.location();
+    Furniture computer = new Furniture("computer");
+    computer.location();
+    Furniture trashcan = new Furniture("trashcan");
+    trashcan.location();
+    Furniture lamp = new Furniture("lamp");
+    lamp.location();
     }
 }
