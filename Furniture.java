@@ -118,10 +118,12 @@ public class Furniture {
 
     Furniture lamp = new Furniture("lamp");
     lamp.location();
+    lamp.stores("inspect lamp");
     System.out.println("done 8 ");
 
     Furniture rug = new Furniture("rug");
     rug.location();
+    rug.stores("inspect rug ");
     System.out.println("done 9");
     }
 }
