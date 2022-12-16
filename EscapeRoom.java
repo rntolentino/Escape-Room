@@ -36,6 +36,7 @@ public class EscapeRoom {
       if(response.toLowerCase().contains("walk")){
         user.walk(response);
         
+        
       }
       // if(response.contains ("inspect")){
       //   //user.walk(response);

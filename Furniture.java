@@ -27,6 +27,7 @@ public class Furniture {
     This method is a bit confusing since we would probably need to do some inheritance or something 
     that'd allow us to connect the classes alltogether. 
     **/
+    
     public void location(){
         if(this.name.toLowerCase().contains("door")|| this.name.toLowerCase().contains("pin-pad")){
             this.location_X = "north" ;
@@ -128,5 +129,6 @@ public class Furniture {
     rug.location();
     rug.stores("inspect rug");
     System.out.println("done 9");
+
     }
 }

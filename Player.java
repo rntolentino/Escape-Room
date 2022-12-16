@@ -7,6 +7,8 @@ public class Player {
   private int locationY;
   private ArrayList <String> inventory = new ArrayList<String>();
   private ArrayList <String> relevantClues = new ArrayList<String>();
+  Furniture door = new Furniture("door");
+  Furniture desk = new Furniture("desk");
   
   /**
   * Constructor 
@@ -83,6 +85,8 @@ public class Player {
     if (direction.toLowerCase().contains("walk north") || direction.toLowerCase().contains("north")){
       this.locationY +=1;
       System.out.println(locationY);
+      door.location();
+
       return(true);
     }
     if (direction.toLowerCase().contains( "walk south")|| direction.toLowerCase().contains("south")){
@@ -93,6 +97,7 @@ public class Player {
     if (direction.toLowerCase().contains("walk west") || direction.toLowerCase().contains("west")){
       this.locationX -=1;
       System.out.println(locationX);
+      desk.location();
       return(true);
     }
     if (direction.toLowerCase().contains("walk east") || direction.toLowerCase().contains("east")){
