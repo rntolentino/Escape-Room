@@ -71,6 +71,9 @@ public class Furniture {
       if (item.toLowerCase().contains("inspect bookcase ")){
         System.out.println("There is a safe on one of the shelves of the bookcase. You need a key to open the safe.");
       }
+      if (item.toLowerCase().contains("inspect desk ")){
+        System.out.println("There is a lamp and a computer on the desk. Next to the desk there is a trashcan.");
+      }
     }
   
     
@@ -123,7 +126,7 @@ public class Furniture {
 
     Furniture rug = new Furniture("rug");
     rug.location();
-    rug.stores("inspect rug ");
+    rug.stores("inspect rug");
     System.out.println("done 9");
     }
 }
