@@ -49,21 +49,28 @@ public class Furniture {
           this.location_Y= "west";
           System.out.println( "You have hit the desk that contains a lamp and computer. There is a trashcan, with a thumbdrive inside, next to the desk. These things are located in the "+location_Y + " part of the room" );
         }
+        if (this.name.toLowerCase().contains("rug")){
+          this.location_X = "0" ;
+          this.location_Y= "0";
+          System.out.println( "You are stnading in the center of the room. Under your feet there is a rug." );
+        }
       }
-    public void stores (){
-      if (this.name.toLowerCase().contains("inspect lamp")){
+    public void stores (String item){
+      if (item.toLowerCase().contains("inspect lamp")){
         System.out.println("There is a paper under the lamp");
       } 
-      if (this.name.toLowerCase().contains("inspect computer")){
+      if (item.toLowerCase().contains("inspect computer")){
         System.out.println("There is a login screen");
       }
-      if (this.name.toLowerCase().contains("inspect trashcan")){
+      if (item.toLowerCase().contains("inspect trashcan")){
         System.out.println("There is a thumbdrive inside the trashcan");
       }
-      if (this.name.toLowerCase().contains("inspect rug ")){
-        
+      if (item.toLowerCase().contains("inspect rug ")){
+        System.out.println("There seems to be a safe under the rug");
       }
-
+      if (item.toLowerCase().contains("inspect bookcase ")){
+        System.out.println("There is a safe on one of the shelves of the bookcase. You need a key to open the safe.");
+      }
     }
   
     
@@ -80,19 +87,41 @@ public class Furniture {
   public static void main(String args[]){
     Furniture desk = new Furniture("desk");
     desk.location();
+    desk.stores("inspect lamp");
+    System.out.println("done 1 ");
+
     Furniture window = new Furniture("window");
     window.location();
+    System.out.println("done 2 ");
+
     Furniture bookcase = new Furniture("bookcase");
     bookcase.location();
+    bookcase.stores("inspect bookcase");
+    System.out.println("done 3 ");
+
     Furniture door = new Furniture("door");
     door.location();
+    System.out.println("done 4 ");
+
     Furniture pinpad = new Furniture("pin-pad");
     pinpad.location();
+    System.out.println("done 5 ");
+
     Furniture computer = new Furniture("computer");
     computer.location();
+    computer.stores("inspect computer");
+    System.out.println("done 6 ");
+
     Furniture trashcan = new Furniture("trashcan");
     trashcan.location();
+    System.out.println("done 7 ");
+
     Furniture lamp = new Furniture("lamp");
     lamp.location();
+    System.out.println("done 8 ");
+
+    Furniture rug = new Furniture("rug");
+    rug.location();
+    System.out.println("done 9");
     }
 }
