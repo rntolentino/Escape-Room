@@ -9,7 +9,12 @@ public class Player {
   private ArrayList <String> relevantClues = new ArrayList<String>();
   Furniture door = new Furniture("door");
   Furniture desk = new Furniture("desk");
-  
+  Furniture window = new Furniture("window");
+  Furniture bookcase = new Furniture("bookcase");
+  Furniture computer = new Furniture("computer");
+  Furniture trashcan = new Furniture("trashcan");
+  Furniture lamp = new Furniture("lamp");
+
   /**
   * Constructor 
   */
@@ -81,33 +86,36 @@ public class Player {
    * @param direction Direction that player wants to walk in. 
    * @return A boolean, true signifies Player has moved
    */
-  public boolean walk(String direction){
+  public void walk(String direction){
     if (direction.toLowerCase().contains("walk north") || direction.toLowerCase().contains("north")){
       this.locationY +=1;
       System.out.println(locationY);
       door.location();
 
-      return(true);
+      // return(true);
     }
     if (direction.toLowerCase().contains( "walk south")|| direction.toLowerCase().contains("south")){
       this.locationY -=1;
       System.out.println(locationY);
-      return(true);
+      bookcase.location();
+      //return(true);
     } 
     if (direction.toLowerCase().contains("walk west") || direction.toLowerCase().contains("west")){
       this.locationX -=1;
       System.out.println(locationX);
       desk.location();
-      return(true);
+  
+      //return(true);
     }
     if (direction.toLowerCase().contains("walk east") || direction.toLowerCase().contains("east")){
       this.locationX += 1;
       System.out.println(locationX);
-      return(true);
+      window.location();
+      //return(true);
     }
-    else{
+    else {
       System.out.println("Give a valid direction");
-      return (false);
+      //return (false);
     }
   }
 
