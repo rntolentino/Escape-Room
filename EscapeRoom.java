@@ -25,8 +25,7 @@ public class EscapeRoom {
 
     do {
       // System.out.println("You are still playing. Follow the instructions if you want to win/lose...");
-      // userResponse = userInput.nextLine().toUpperCase();
-      
+
       this.name = userInput.nextLine();  
       System.out.println("Hello, " + name);  
       // EscapeRoom.addPlayer(new Player (name)); //Creating instance of player in EscapeRoom
@@ -43,21 +42,10 @@ public class EscapeRoom {
       // if(response.contains ("use")){
       //   //user.walk(response);
 
-      
-      if (userInput.equals("reset") || userInput.equals("LOSE") ){
+      //Stopping condition for game loop 
+      if (response.toLowerCase().contains("reset") || response.toLowerCase().contains("LOSE")){
         stillPlaying = false;
       }
-
-      
-      
-      // Once you exit the loop, you may need to deal with various possible stopping conditions
-      if (userInput.equals("WIN")) {
-        System.out.println("Yay, you won!");
-      } 
-      else if (userInput.equals("LOSE")) {
-        System.out.println("Better luck next time.");
-      }
-    
     
     } while (stillPlaying);
     //   // Tidy up
@@ -69,7 +57,7 @@ public class EscapeRoom {
   //public userLocation()
   
   private static Player addPlayer(Player p) {
-    //System.out.println("Adding player...");
+    System.out.println("Adding player...");
     Player user = p;
     p.getName();
     return user; 
@@ -91,28 +79,18 @@ public class EscapeRoom {
     }
   
   public void resetGame(String userInput) {
-    if (userInput.toLowerCase().contains("reset")) {
-      EscapeRoom room2 = new EscapeRoom();
-      room2.startGame();
+    if (userInput.contains("reset")) {
+      EscapeRoom room= new EscapeRoom();
+      room.startGame();
       user.undo();
-      //startGame();
     }
   }
-
-  // public void addPlayer(Player p) {
-  //   return p;
-  // }
-
   
   /* main method (for testing) */
   public static void main(String[] args) {
     EscapeRoom room = new EscapeRoom();
     room.startGame();
 
-
-    //room.addPlayer(new Player(name, "blue"));
-
-    
   }
 }
     
