@@ -1,30 +1,33 @@
 import java.util.ArrayList;
+import java.awt.Point;
 
 public class Player { 
   // Attributes
   public String name;  // can make private and use accessors and manipulators y
   private int locationX;
   private int locationY;
+  private Point location;
   private ArrayList <String> inventory = new ArrayList<String>();
   private ArrayList <String> relevantClues = new ArrayList<String>();
-  Furniture door = new Furniture("door");
-  Furniture desk = new Furniture("desk");
-  Furniture window = new Furniture("window");
-  Furniture bookcase = new Furniture("bookcase");
-  Furniture computer = new Furniture("computer");
-  Furniture trashcan = new Furniture("trashcan");
-  Furniture lamp = new Furniture("lamp");
+  // Furniture door = new Furniture("door");
+  // Furniture desk = new Furniture("desk");
+  // Furniture window = new Furniture("window");
+  // Furniture bookcase = new Furniture("bookcase");
+  // Furniture computer = new Furniture("computer");
+  // Furniture trashcan = new Furniture("trashcan");
+  // Furniture lamp = new Furniture("lamp");
 
   /**
   * Constructor 
   */
-  public Player (String name) {
+
+  public Player (String name){
     this.name = name;
-    this.locationX = 0 ;
-    this.locationY= 0 ;
+    // this.locationX = 0 ;
+    // this.locationY= 0 ;
+    this.location = new Point(0, 0);
     
   }
-
   // Accessors & Manipulators 
   /**
    * Sets the name 
@@ -68,6 +71,10 @@ public class Player {
     System.out.println("You have dropped " + item );
     return (item);
      
+  }
+
+  public Point getLocation(){
+    return (this.getLocation());
   }
 
 

@@ -1,5 +1,6 @@
 import java.util.Scanner; 
 import java.util.ArrayList;
+import java.awt.Point;
 
 public class Item {
   
@@ -13,7 +14,7 @@ public class Item {
   private Boolean has_clue; 
   // public static void main(String[] args);
  
-  //building the constructor 
+  //The constructor 
   public Item (String name, String type, int locationX, int locationY ) { 
     if (name != null) { this.name = name; }
     this.type = type;
