@@ -22,13 +22,12 @@ public class EscapeRoom {
     System.out.println("-----------------------------------");
     System.out.println(" ");
     System.out.println("Welcome to our Escape Room! What is you name?");
+    this.name = userInput.nextLine();  
 
     do {
       // System.out.println("You are still playing. Follow the instructions if you want to win/lose...");
 
-      this.name = userInput.nextLine();  
       System.out.println("Hello, " + name);  
-      // EscapeRoom.addPlayer(new Player (name)); //Creating instance of player in EscapeRoom
       System.out.println("You are standing in the center of a room above a rug. There is a door to the north. A bookcase to the south. A window to the west. And a desk to the east."); 
       String response = userInput.nextLine();  
 
@@ -37,13 +36,17 @@ public class EscapeRoom {
         
         
       }
+      if (response.toLowerCase().contains("reset")){
+        resetGame(response);
+      }
+
       // if(response.contains ("inspect")){
       //   //user.walk(response);
       // if(response.contains ("use")){
       //   //user.walk(response);
 
       //Stopping condition for game loop 
-      if (response.toLowerCase().contains("reset") || response.toLowerCase().contains("LOSE")){
+      if (response.toLowerCase().contains("END GAME") || response.toLowerCase().contains("LOSE")){
         stillPlaying = false;
       }
     
@@ -80,7 +83,7 @@ public class EscapeRoom {
   
   public void resetGame(String userInput) {
     if (userInput.contains("reset")) {
-      EscapeRoom room= new EscapeRoom();
+      EscapeRoom room = new EscapeRoom();
       room.startGame();
       user.undo();
     }
