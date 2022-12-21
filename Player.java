@@ -74,7 +74,7 @@ public class Player {
   }
 
   public Point getLocation(){
-    return (this.getLocation());
+    return location;
   }
 
 
