@@ -17,7 +17,7 @@ public class Furniture {
   */
   public Furniture (String name, Point location){
     this.name = name;
-    this.location = location;      
+    this.location = location;   
   }
 
   public Point getLocation(){
@@ -70,22 +70,25 @@ public class Furniture {
   }
   public void stores (String item){
     if (item.toLowerCase().contains("inspect lamp")){
-      System.out.println("There is a paper under the lamp");
+      System.out.println("There is a paper under the lamp.");
     } 
     if (item.toLowerCase().contains("inspect computer")){
-      System.out.println("There is a login screen");
+      System.out.println("There is a login screen.");
     }
     if (item.toLowerCase().contains("inspect trashcan")){
-      System.out.println("There is a thumbdrive inside the trashcan");
+      System.out.println("There is a thumbdrive inside the trashcan.");
     }
     if (item.toLowerCase().contains("inspect rug ")){
-      System.out.println("There seems to be a safe under the rug");
+      System.out.println("There seems to be a box under the rug. In the box is a key.");
     }
     if (item.toLowerCase().contains("inspect bookcase ")){
       System.out.println("There is a safe on one of the shelves of the bookcase. You need a key to open the safe.");
     }
     if (item.toLowerCase().contains("inspect desk ")){
       System.out.println("There is a lamp and a computer on the desk. Next to the desk there is a trashcan.");
+    }
+    if (item.toLowerCase().contains("inspect pin-pad ")){
+      System.out.println("Find code.");
     }
   }
 

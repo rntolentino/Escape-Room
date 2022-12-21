@@ -4,8 +4,8 @@ import java.awt.Point;
 public class Player { 
   // Attributes
   public String name;  // can make private and use accessors and manipulators y
-  private int locationX;
-  private int locationY;
+  // private int locationX;
+  // private int locationY;
   private Point location;
   private ArrayList <String> inventory = new ArrayList<String>();
   private ArrayList <String> relevantClues = new ArrayList<String>();
@@ -84,7 +84,7 @@ public class Player {
    */
   public void use(String item){
     if (inventory.contains(item) == true){
-      System.out.println("placeholder ");
+      System.out.println("USED ");
     }
   }
 
@@ -95,35 +95,39 @@ public class Player {
    */
   public void walk(String direction){
     if (direction.toLowerCase().contains("walk north") || direction.toLowerCase().contains("north")){
-      this.locationY +=1;
-      System.out.println(locationY);
+      // this.locationY +=1;
+      System.out.println("walking north");
+      Furniture door = new Furniture("door", new Point(0,3));
       door.location();
 
       // return(true);
     }
     if (direction.toLowerCase().contains( "walk south")|| direction.toLowerCase().contains("south")){
-      this.locationY -=1;
-      System.out.println(locationY);
+      // this.locationY -=1;
+      System.out.println("walking south");
+      Furniture bookcase = new Furniture("bookcase", new Point(0,-3));
       bookcase.location();
       //return(true);
     } 
     if (direction.toLowerCase().contains("walk west") || direction.toLowerCase().contains("west")){
-      this.locationX -=1;
-      System.out.println(locationX);
+      // this.locationX -=1;
+      System.out.println("walking west");
+      Furniture desk = new Furniture("desk", new Point(-3,0));
       desk.location();
   
       //return(true);
     }
     if (direction.toLowerCase().contains("walk east") || direction.toLowerCase().contains("east")){
-      this.locationX += 1;
-      System.out.println(locationX);
+      // this.locationX += 1;
+      System.out.println("walking east");
+      Furniture window = new Furniture("window", new Point(3,0));
       window.location();
       //return(true);
     }
-    else {
-      System.out.println("Give a valid direction");
-      //return (false);
-    }
+    // else if (direction.toLowerCase().contains("walk") ){
+    //   System.out.println("Give a valid direction");
+    //   //return (false);
+    // }
   }
 
   /**
@@ -131,8 +135,8 @@ public class Player {
    */
   public void undo(){
     this.name= "Steve";
-    this.locationX = 0 ;
-    this.locationY= 0 ;
+    // this.locationX = 0 ;
+    // this.locationY= 0 ;
   }
     
 

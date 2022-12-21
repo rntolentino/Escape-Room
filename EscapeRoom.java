@@ -8,12 +8,14 @@ public class EscapeRoom {
   //attributes
   private Boolean exit;
   public String name;
-  Scanner userInput = new Scanner(System.in);
+  Scanner user_input = new Scanner(System.in);
 
   private Player user;
   private Furniture rug;
+  private Furniture door;
+  private Furniture desk;
   boolean stillPlaying = true;
-  String userResponse = "";
+  String user_response = "";
   private int north, south, east, west;
 
 
@@ -23,7 +25,9 @@ public class EscapeRoom {
   public EscapeRoom(){
     this.name = null;
     this.user = EscapeRoom.addPlayer(new Player (this.name)); //Creating instance of player in EscapeRoom
-    this.rug = EscapeRoom.addFurniture(new Furniture("rug", new Point(0,0))); //Creating instance of player in EscapeRoom
+    this.rug = EscapeRoom.addFurniture(new Furniture("rug", new Point(0,0))); //Creating instance of rug in EscapeRoom
+    this.door= EscapeRoom.addFurniture(new Furniture("door", new Point(0,3)));
+    this.desk= EscapeRoom.addFurniture( new Furniture("desk", new Point(-3,0)));
     this.north = 3;
     this.south = -3;
     this.east = 3;
@@ -37,16 +41,16 @@ public class EscapeRoom {
     System.out.println("-----------------------------------");
     System.out.println(" ");
     System.out.println("Welcome to our Escape Room! What is you name?");
-    this.name = userInput.nextLine(); 
+    this.name = user_input.nextLine(); 
     System.out.println("Hello, " + name);  
-    System.out.println("You are standing in the center of a room above a rug. There is a door to the north. A bookcase to the south. A window to the west. And a desk to the east."); 
+    System.out.println("You are standing in the center of a room above a rug. There is a door to the north. A bookcase to the south. A window to the east. And a desk to the west."); 
     gameLoop();
   }
   
   public void gameLoop() {
     do {
       // System.out.println("You are still playing. Follow the instructions if you want to win/lose...");
-      String response = userInput.nextLine();  
+      String response = user_input.nextLine();  
       if(response.toLowerCase().contains("walk")){
         user.walk(response);
         
@@ -57,11 +61,61 @@ public class EscapeRoom {
       }
 
       if(response.toLowerCase().contains("inspect")){
-        if(user.getLocation().equals(rug.getLocation())){
-          rug.stores(response);
+        if (response.toLowerCase().contains("inspect lamp")){
+          System.out.println("There is a paper under the lamp");
+        } 
+        if (response.toLowerCase().contains("inspect computer")){
+          System.out.println("There is a login screen");
+        }
+        if (response.toLowerCase().contains("inspect trashcan")){
+          System.out.println("There is a thumbdrive inside the trashcan");
+        }
+        if (response.toLowerCase().contains("inspect rug")){
+          System.out.println("There seems to be a loose board under it is a box. In the box is a key.");
+        }
+        if (response.toLowerCase().contains("inspect bookcase")){
+          System.out.println("There is a safe on one of the shelves of the bookcase. You need a key to open the safe.");
+        }
+        if (response.toLowerCase().contains("inspect desk")){
+          System.out.println("There is a lamp and a computer on the desk. Next to the desk there is a trashcan.");
+        }
+        if (response.toLowerCase().contains("inspect pin-pad")){
+          System.out.println("Find code");
+        
+      }
+    }
+
+      if(response.toLowerCase().contains("grab")){
+        if (response.toLowerCase().contains("grab paper")){
+          user.grab("Paper that has a phrase written on it. The phrase says username: helloworld");
+        }
+        if (response.toLowerCase().contains("grab thumbdrive")){
+          user.grab("Thumb drive has a file on it.");
+        }
+        if (response.toLowerCase().contains("grab key")){
+          user.grab("Key for safe.");
+        }
+        if (response.toLowerCase().contains("grab post-it")){
+          user.grab("Post-it that has a phrase written on it. The phrase says password: iguessyoufoundme");
         }
       }
 
+      if(response.toLowerCase().contains("use")){
+        if (response.toLowerCase().contains("use paper")){
+          user.use("Paper that has a phrase written on it. The phrase says username: helloworld");
+        }
+        if (response.toLowerCase().contains("use thumbdrive")){
+          user.use("Thumb drive has a file on it. On the file is a pin ");
+        }
+        if (response.toLowerCase().contains("use key")){
+          user.use("Key for safe.");
+          System.out.println("There is a post-it in the safe.");
+        }
+        
+      //   if (response.toLowerCase().contains("grab post-it")){
+      //     user.grab("Post-it that has a phrase written on it. The phrase says password: iguessyoufoundme");
+      //   }
+     }
 
 
       // if(response.contains ("use")){
@@ -73,6 +127,8 @@ public class EscapeRoom {
         endGame(stillPlaying);
       }
     } while (stillPlaying);
+
+
   }
 
 
@@ -95,6 +151,30 @@ public class EscapeRoom {
     f.getLocation();
     return user; 
   }
+
+  public void stores (String item){
+    if (item.toLowerCase().contains("inspect lamp")){
+      System.out.println("There is a paper under the lamp");
+    } 
+    if (item.toLowerCase().contains("inspect computer")){
+      System.out.println("There is a login screen");
+    }
+    if (item.toLowerCase().contains("inspect trashcan")){
+      System.out.println("There is a thumbdrive inside the trashcan");
+    }
+    if (item.toLowerCase().contains("inspect rug ")){
+      System.out.println("There seems to be a safe under the rug");
+    }
+    if (item.toLowerCase().contains("inspect bookcase ")){
+      System.out.println("There is a safe on one of the shelves of the bookcase. You need a key to open the safe.");
+    }
+    if (item.toLowerCase().contains("inspect desk ")){
+      System.out.println("There is a lamp and a computer on the desk. Next to the desk there is a trashcan.");
+    }
+    if (item.toLowerCase().contains("inspect pin-pad ")){
+      System.out.println("Find code");
+    }
+  }
   
   // private static void addItem(Item b) {
   //   System.out.println("Adding item...");  
@@ -105,19 +185,19 @@ public class EscapeRoom {
 
   public void endGame(boolean exit) {
     if (exit = true){
-      userInput.close();
+      user_input.close();
       System.out.println("You have successfully escaped!"); 
       System.out.println("GAME OVER");
     }
     if (exit = false){
-      userInput.close();
+      user_input.close();
       System.out.println("You have failed to escape :("); 
       System.out.println("GAME OVER");
     }
   }
   
-  public void resetGame(String userInput) {
-    if (userInput.contains("reset")) {
+  public void resetGame(String user_input) {
+    if (user_input.contains("reset")) {
       EscapeRoom room = new EscapeRoom();
       room.startGame();
       user.undo();
@@ -127,7 +207,7 @@ public class EscapeRoom {
   /* main method (for testing) */
   public static void main(String[] args) {
     EscapeRoom room = new EscapeRoom();
-    Furniture rug = new Furniture("rug", new Point(0,0));
+    // Furniture rug = new Furniture("rug", new Point(0,0));
     // Furniture door = new Furniture("door");
     // Furniture pinPad = new Furniture("pin-pad"); //Is this correct naming?
     // Furniture desk = new Furniture("desk");
