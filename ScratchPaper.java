@@ -24,6 +24,58 @@
 //     // make a parameter for clue 
       
 // }
+  // if(response.contains ("use")){
+      //   //user.walk(response);
+
+
+ //   if (response.toLowerCase().contains("grab post-it")){
+      //     user.grab("Post-it that has a phrase written on it. The phrase says password: iguessyoufoundme");
+      //   }
+
+
+  // public void stores (String item){
+  //   if (item.toLowerCase().contains("inspect lamp ")){
+  //     if (userPoint.equals(westPoint)){
+  //       System.out.println("The player is at " + EscapeRoom.userPoint);
+  //       System.out.println("The lamp it at " + this.westPoint);
+  //       System.out.println("There is a paper under the lamp");
+  //     }
+  //     else{
+  //       System.out.println("You are not close enough to the lamp");
+  //     }
+  //   } 
+  //   if (item.toLowerCase().contains("inspect computer ")){
+  //     System.out.println("There is a login screen");
+  //   }
+  //   if (item.toLowerCase().contains("inspect trashcan ")){
+  //     System.out.println("There is a thumbdrive inside the trashcan");
+  //   }
+  //   if (item.toLowerCase().contains("inspect rug ")){
+  //     System.out.println("There seems to be a safe under the rug");
+  //   }
+  //   if (item.toLowerCase().contains("inspect bookcase ")){
+  //     System.out.println("There is a safe on one of the shelves of the bookcase. You need a key to open the safe.");
+  //   }
+  //   if (item.toLowerCase().contains("inspect desk ")){
+  //     System.out.println("There is a lamp and a computer on the desk. Next to the desk there is a trashcan.");
+  //   }
+  //   if (item.toLowerCase().contains("inspect pin-pad ")){
+  //     System.out.println("Find code");
+  //   }
+  //   if (item.toLowerCase().contains("inspect window ")){
+  //     System.out.println("You have fallen out of the window.");
+  //     endGame(false);
+  //   }
+  // }
+  
+  // private static void addItem(Item b) {
+  //   System.out.println("Adding item...");  
+  //   b.getName();
+
+  // }
+    
+
+
 
 
 //   //methods 
@@ -68,5 +120,4 @@ public void itemtype
 This method will allow us to distinguish between furniture items and technology. Currently unsure on how to make this work or if it makes sense to implement this. 
  **/ 
 // }
-
  

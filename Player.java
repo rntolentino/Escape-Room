@@ -4,19 +4,9 @@ import java.awt.Point;
 public class Player { 
   // Attributes
   public String name;  // can make private and use accessors and manipulators y
-  // private int locationX;
-  // private int locationY;
   private Point location;
   private ArrayList <String> inventory = new ArrayList<String>();
-  private ArrayList <String> relevantClues = new ArrayList<String>();
-  // Furniture door = new Furniture("door");
-  // Furniture desk = new Furniture("desk");
-  // Furniture window = new Furniture("window");
-  // Furniture bookcase = new Furniture("bookcase");
-  // Furniture computer = new Furniture("computer");
-  // Furniture trashcan = new Furniture("trashcan");
-  // Furniture lamp = new Furniture("lamp");
-
+ 
   /**
   * Constructor 
   */
@@ -35,21 +25,24 @@ public class Player {
   public void setName(String name2) {
     this.name = name2;
   }
-  
+
+  /**
+   * Gets the name 
+   * @return  the name of the player
+  */
   public String getName(){
     return this.name;
   }
-  
-  // Methods 
+
   /**
-  * Creates the list of clues that are relevant to the game.
+   * Gets the location of player
+   * @return players location
   */
-  public void createRelevantClues() {
-    relevantClues.add("placeholder");
-    relevantClues.add("placeholder");
-    relevantClues.add("placeholder");
+  public Point getLocation(){
+    return this.location;
   }
   
+  // Methods 
   /**
    * Grabs an item and adds it to inventory
    * @param item The item grabbed 
@@ -82,58 +75,50 @@ public class Player {
     }
   }
 
-  /**
-   * Allows player to walk based on direction given
+ /**
+   * Allows player to walk based on direction given. Creates instances of furniture based on the location
+   * Calls upon the Furniture class location method to provide a description of the location they have
+   * walked to.
    * @param direction Direction that player wants to walk in. 
-   * @return 
-   * @return A boolean, true signifies Player has moved
-   */
+   * @return Point The Location of the Player 
+  */
   public Point walk(String direction){
     if (direction.toLowerCase().contains("walk north") || direction.toLowerCase().contains("north")){
-      // this.locationY +=1;
       System.out.println("walking north");
       this.location.x = 0;
       this.location.y = 3;
       Furniture door = new Furniture("door", new Point(0,3));
       door.location();
 
-      // return(true);
     }
     if (direction.toLowerCase().contains( "walk south")|| direction.toLowerCase().contains("south")){
-      // this.locationY -=1;
       System.out.println("walking south");
       this.location.x = 0;
       this.location.y = -3;
       Furniture bookcase = new Furniture("bookcase", new Point(0,-3));
       bookcase.location();
-      //return(true);
+
     } 
     if (direction.toLowerCase().contains("walk west") || direction.toLowerCase().contains("west")){
-      // this.locationX -=1;
       System.out.println("walking west");
       this.location.x = -3;
       this.location.y = 0;
       Furniture desk = new Furniture("desk", new Point(-3,0));
       desk.location();
-      //return(true);
+
     }
     if (direction.toLowerCase().contains("walk east") || direction.toLowerCase().contains("east")){
-      // this.locationX += 1;
       System.out.println("walking east");
       this.location.x = 3;
       this.location.y = 0;
       Furniture window = new Furniture("window", new Point(3,0));
-
       window.location();
-      //return(true);
+
     }
     System.out.println("The player is at " + this.location);
     return this.location;
   }
-
-  public Point getLocation(){
-    return this.location;
-  }
+  
 
 
   /**
@@ -141,8 +126,7 @@ public class Player {
    */
   public void undo(){
     this.name = ("Steve");
-    // this.locationX = 0 ;
-    // this.locationY= 0 ;
+
   }
     
 
@@ -153,7 +137,7 @@ public class Player {
     pet.grab("star");
     pet.grab("banana");
     pet.drop("banana");
-    pet.createRelevantClues();
+  
     pet.use("star");
     pet.walk("north");
     pet.undo();

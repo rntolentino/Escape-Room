@@ -3,9 +3,7 @@ import java.util.*;
 import java.awt.Point;//Think we should just import point to make the coords situation easier (http://www.java2s.com/Tutorial/Java/0261__2D-Graphics/Pointclass.htm)
 
 public class Furniture {
-  /**
-  * attributes
-  */
+  // attributes 
   public String name;  // can make private and use accessors and manipulators y
   private String location_X;
   private String location_Y;
@@ -22,10 +20,19 @@ public class Furniture {
     this.location = location;   
   }
 
+  //Accessors and Manipulators 
+  /**
+  * Gets the location of furniture 
+  * @return the location of the furniture 
+  */
   public Point getLocation(){
     return this.location;
   }
 
+   /**
+  * Gets the name of the furniture 
+  * @return the nameo
+  */
   public String getName(){
     return this.name;
   }
@@ -42,7 +49,10 @@ public class Furniture {
     This method is a bit confusing since we would probably need to do some inheritance or something 
     that'd allow us to connect the classes alltogether. 
     **/
-    
+  
+  /**
+  * Describes the location the player has arrived to, based on the furniture located there. 
+  */
   public void location(){
     if(this.name.toLowerCase().contains("door")|| this.name.toLowerCase().contains("pin-pad")){
       this.location_X = "north" ;
@@ -70,41 +80,7 @@ public class Furniture {
       System.out.println( "You are standing in the center of the room. Under your feet there is a rug." );
     }
   }
-  public void stores (String item){
-    if (item.toLowerCase().contains("inspect lamp")){
-      System.out.println("There is a paper under the lamp.");
-    } 
-    if (item.toLowerCase().contains("inspect computer")){
-      System.out.println("There is a login screen.");
-    }
-    if (item.toLowerCase().contains("inspect trashcan")){
-      System.out.println("There is a thumbdrive inside the trashcan.");
-    }
-    if (item.toLowerCase().contains("inspect rug ")){
-      System.out.println("There seems to be a box under the rug. In the box is a key.");
-    }
-    if (item.toLowerCase().contains("inspect bookcase ")){
-      System.out.println("There is a safe on one of the shelves of the bookcase. You need a key to open the safe.");
-    }
-    if (item.toLowerCase().contains("inspect desk ")){
-      System.out.println("There is a lamp and a computer on the desk. Next to the desk there is a trashcan.");
-    }
-    if (item.toLowerCase().contains("inspect pin-pad ")){
-      System.out.println("Find code.");
-    }
-  }
 
-    
-      
-
-    
-
-
-        
-    
-    
- 
-  
   public static void main(String args[]){
     // Furniture desk = new Furniture("desk");
     // desk.location();
@@ -142,10 +118,10 @@ public class Furniture {
     // lamp.stores("inspect lamp");
     // System.out.println("done 8 ");
 
-    Furniture rug = new Furniture("rug", new Point(0, 0));
-    rug.location();
-    rug.stores("inspect rug");
-    System.out.println("done 9");
+    // Furniture rug = new Furniture("rug", new Point(0, 0));
+    // rug.location();
+    // rug.stores("inspect rug");
+    // System.out.println("done 9");
 
   }
 }

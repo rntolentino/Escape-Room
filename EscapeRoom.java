@@ -32,7 +32,7 @@ public class EscapeRoom {
 
 
   /**
-  * Constructor 
+  * Constructor of EscapeRoom
   */
   public EscapeRoom(){
     this.name = null;
@@ -59,6 +59,23 @@ public class EscapeRoom {
     this.west = -3;
   }
 
+
+  
+  //Manipulator 
+  /**
+   * Sets the location,used for Point
+   * @return sets the users point as the new point
+  */
+  public static Point setLocation(Point newPoint){
+    return userPoint = newPoint;
+  }
+
+
+
+  /**
+   * Creates/prints out the banner displayed at the beginning of the game. Asks for the players name.
+   * Greets the player then gives them a description of the escape room, calls gameloop after.
+  */
   public void startGame() {
     System.out.println("-----------------------------------");
     System.out.println("         Java Escape Room");
@@ -70,7 +87,12 @@ public class EscapeRoom {
     System.out.println("You are standing in the center of a room above a rug. There is a door to the north. A bookcase to the south. A window to the east. And a desk to the west."); 
     gameLoop();
   }
-  
+
+  /**
+   * The game loop for the escape room game. Allows the player to walk, reset the game,
+   * inspect items and furniture. Allows the user to grab and use clues. 
+   * Sets the stopping conditions for the game
+  */
   public void gameLoop() {
     do {
       // System.out.println("You are still playing. Follow the instructions if you want to win/lose...");
@@ -151,9 +173,6 @@ public class EscapeRoom {
       }
 
       if(response.toLowerCase().contains("use")){
-        if (response.toLowerCase().contains("use paper")){
-          user.use("Paper that has a phrase written on it. The phrase says username: helloworld");
-        }
         if (response.toLowerCase().contains("use thumbdrive")){
           user.use("Thumb drive has a file on it. On the file is a pin ");
         }
@@ -162,15 +181,7 @@ public class EscapeRoom {
           System.out.println("There is a post-it in the safe.");
   
         }
-        
-      //   if (response.toLowerCase().contains("grab post-it")){
-      //     user.grab("Post-it that has a phrase written on it. The phrase says password: iguessyoufoundme");
-      //   }
      }
-
-
-      // if(response.contains ("use")){
-      //   //user.walk(response);
 
       //Stopping condition for game loop 
       if (response.toLowerCase().contains("END GAME") || response.toLowerCase().contains("LOSE")){
@@ -184,10 +195,11 @@ public class EscapeRoom {
 
 
 
-  public static Point setLocation(Point newPoint){
-    return userPoint = newPoint;
-  }
-  
+  /**
+   * Adds player into the room. Contructs a player (calls on the constructor for player).
+   * @param Player  new instance of player 
+   * @return the user
+  */
   private static Player addPlayer(Player p) {
     System.out.println("Adding player...");
     Player user = p;
@@ -195,6 +207,14 @@ public class EscapeRoom {
     return user; 
   }
 
+
+
+
+  /**
+   * Adds furniture to the room. Constructs furniture (calls on the constructor for furniture).
+   * @param Furniture new instance of furniture 
+   * @return the furniture 
+  */
   private static Furniture addFurniture(Furniture f) {
     System.out.println("Adding furniture...");
     Furniture rug = f;
@@ -203,48 +223,12 @@ public class EscapeRoom {
     return f; 
   }
 
-  // public void stores (String item){
-  //   if (item.toLowerCase().contains("inspect lamp ")){
-  //     if (userPoint.equals(westPoint)){
-  //       System.out.println("The player is at " + EscapeRoom.userPoint);
-  //       System.out.println("The lamp it at " + this.westPoint);
-  //       System.out.println("There is a paper under the lamp");
-  //     }
-  //     else{
-  //       System.out.println("You are not close enough to the lamp");
-  //     }
-  //   } 
-  //   if (item.toLowerCase().contains("inspect computer ")){
-  //     System.out.println("There is a login screen");
-  //   }
-  //   if (item.toLowerCase().contains("inspect trashcan ")){
-  //     System.out.println("There is a thumbdrive inside the trashcan");
-  //   }
-  //   if (item.toLowerCase().contains("inspect rug ")){
-  //     System.out.println("There seems to be a safe under the rug");
-  //   }
-  //   if (item.toLowerCase().contains("inspect bookcase ")){
-  //     System.out.println("There is a safe on one of the shelves of the bookcase. You need a key to open the safe.");
-  //   }
-  //   if (item.toLowerCase().contains("inspect desk ")){
-  //     System.out.println("There is a lamp and a computer on the desk. Next to the desk there is a trashcan.");
-  //   }
-  //   if (item.toLowerCase().contains("inspect pin-pad ")){
-  //     System.out.println("Find code");
-  //   }
-  //   if (item.toLowerCase().contains("inspect window ")){
-  //     System.out.println("You have fallen out of the window.");
-  //     endGame(false);
-  //   }
-  // }
-  
-  // private static void addItem(Item b) {
-  //   System.out.println("Adding item...");  
-  //   b.getName();
 
-  // }
-
-
+  /**
+   * Ends the game. Tells the player whether they have escaped successfully or if they failed.
+   * Closes the scanner.
+   * @param boolean Tells whether the player has exited successfully  
+  */
   public void endGame(boolean exit) {
     if (exit = true){
       user_input.close();
@@ -257,7 +241,12 @@ public class EscapeRoom {
       System.out.println("GAME OVER");
     }
   }
-  
+
+
+ /**
+   * Resets the name when the user inputs "reset"
+   * @param String the user input/response
+  */ 
   public void resetGame(String user_input) {
     if (user_input.contains("reset")) {
       EscapeRoom room = new EscapeRoom();
@@ -265,6 +254,7 @@ public class EscapeRoom {
       user.undo();
     }
   }
+
   
   /* main method (for testing) */
   public static void main(String[] args) {
@@ -283,5 +273,4 @@ public class EscapeRoom {
 
   }
 }
-    
 
