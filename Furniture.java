@@ -22,16 +22,16 @@ public class Furniture {
 
   //Accessors and Manipulators 
   /**
-  * Gets the location of furniture 
-  * @return the location of the furniture 
+   * Gets the location of furniture 
+   * @return the location of the furniture 
   */
   public Point getLocation(){
     return this.location;
   }
 
-   /**
-  * Gets the name of the furniture 
-  * @return the nameo
+  /**
+   * Gets the name of the furniture 
+   * @return the nameo
   */
   public String getName(){
     return this.name;

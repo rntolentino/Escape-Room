@@ -2,6 +2,9 @@ Hello! Welcome to Java Escape Room (beta version) :D
 
 Below you will find your cheatsheet to help you escape. 
 
+DESCRIPTION OF THE ROOM:
+At the center of a room there is a rug. There is a door to the north. A bookcase to the south. A window to the east and a desk to the west.
+HINT*** WE HAVE INCLUDED A DRAWING OF THE MAP ***
 /////////////////////////////////////////////////////////////////
                     Moving around the room: 
 
@@ -34,7 +37,8 @@ Example ---> "inspect lamp"
 
 
 /////////////////////////////////////////////////////////////////
-HINTS*** insert thumbdrive***
+HINTS *** insert thumbdrive***
+
 
 
 
