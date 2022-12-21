@@ -134,7 +134,7 @@ public class Player {
    * Re-sets the attributes, basically gives default values
    */
   public void undo(){
-    this.name= "Steve";
+    this.name = ("Steve");
     // this.locationX = 0 ;
     // this.locationY= 0 ;
   }
