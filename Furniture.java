@@ -3,13 +3,15 @@ import java.util.*;
 import java.awt.Point;//Think we should just import point to make the coords situation easier (http://www.java2s.com/Tutorial/Java/0261__2D-Graphics/Pointclass.htm)
 
 public class Furniture {
+  /**
+  * attributes
+  */
   public String name;  // can make private and use accessors and manipulators y
   private String location_X;
   private String location_Y;
   private Point location; 
   private ArrayList<String> storage = new ArrayList<String>();
 
-  // Furniture rug = new Furniture("rug", new Point(0, 0));
 
 
   /**
@@ -50,7 +52,7 @@ public class Furniture {
     if (this.name.toLowerCase().contains("bookcase") ){
       this.location_X = "0" ;
       this.location_Y= "south";
-      System.out.println( "You have hit the bookcase that has a safe, it is located in the "+ location_Y + " part of the room" );
+      System.out.println( "You have hit the bookcase, it is located in the "+ location_Y + " part of the room" );
     }
     if (this.name.toLowerCase().contains("window")){
       this.location_X = "east" ;

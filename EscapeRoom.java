@@ -98,6 +98,18 @@ public class EscapeRoom {
         } 
         if (response.toLowerCase().contains("inspect computer")){
           System.out.println("There is a login screen");
+          System.out.println("Input the username:");
+          do{
+            if(response.toLowerCase().contains("helloworld")){
+              System.out.println("Input the password:");
+              if (response.toLowerCase().contains("iguessyoufoundme")){
+              System.out.println("You are on the computer.");
+              }
+              if (response.toLowerCase().contains("insert thumbdrive")){
+                System.out.println("The pin is 1202");
+              }
+          }
+          }while(response.toLowerCase().contains("helloworld"));
         }
         if (response.toLowerCase().contains("inspect trashcan")){
           System.out.println("There is a thumbdrive inside the trashcan");
@@ -112,10 +124,16 @@ public class EscapeRoom {
           System.out.println("There is a lamp and a computer on the desk. Next to the desk there is a trashcan.");
         }
         if (response.toLowerCase().contains("inspect pin-pad")){
-          System.out.println("Find code");
-        
+          System.out.println("Insert code:");
+          if (response.toLowerCase().contains("1202")){
+            endGame(true);
+          }
+        }
+        if (response.toLowerCase().contains("inspect window")){
+          System.out.println("You have fallen out of the window.");
+          endGame(false);
+        }
       }
-    }
 
       if(response.toLowerCase().contains("grab")){
         if (response.toLowerCase().contains("grab paper")){
@@ -142,6 +160,7 @@ public class EscapeRoom {
         if (response.toLowerCase().contains("use key")){
           user.use("Key for safe.");
           System.out.println("There is a post-it in the safe.");
+  
         }
         
       //   if (response.toLowerCase().contains("grab post-it")){
@@ -184,36 +203,40 @@ public class EscapeRoom {
     return f; 
   }
 
-  public void stores (String item){
-    if (item.toLowerCase().contains("inspect lamp ")){
-      if (userPoint.equals(westPoint)){
-        System.out.println("The player is at " + EscapeRoom.userPoint);
-        System.out.println("The lamp it at " + this.westPoint);
-        System.out.println("There is a paper under the lamp");
-      }
-      else{
-        System.out.println("You are not close enough to the lamp");
-      }
-    } 
-    if (item.toLowerCase().contains("inspect computer ")){
-      System.out.println("There is a login screen");
-    }
-    if (item.toLowerCase().contains("inspect trashcan ")){
-      System.out.println("There is a thumbdrive inside the trashcan");
-    }
-    if (item.toLowerCase().contains("inspect rug ")){
-      System.out.println("There seems to be a safe under the rug");
-    }
-    if (item.toLowerCase().contains("inspect bookcase ")){
-      System.out.println("There is a safe on one of the shelves of the bookcase. You need a key to open the safe.");
-    }
-    if (item.toLowerCase().contains("inspect desk ")){
-      System.out.println("There is a lamp and a computer on the desk. Next to the desk there is a trashcan.");
-    }
-    if (item.toLowerCase().contains("inspect pin-pad ")){
-      System.out.println("Find code");
-    }
-  }
+  // public void stores (String item){
+  //   if (item.toLowerCase().contains("inspect lamp ")){
+  //     if (userPoint.equals(westPoint)){
+  //       System.out.println("The player is at " + EscapeRoom.userPoint);
+  //       System.out.println("The lamp it at " + this.westPoint);
+  //       System.out.println("There is a paper under the lamp");
+  //     }
+  //     else{
+  //       System.out.println("You are not close enough to the lamp");
+  //     }
+  //   } 
+  //   if (item.toLowerCase().contains("inspect computer ")){
+  //     System.out.println("There is a login screen");
+  //   }
+  //   if (item.toLowerCase().contains("inspect trashcan ")){
+  //     System.out.println("There is a thumbdrive inside the trashcan");
+  //   }
+  //   if (item.toLowerCase().contains("inspect rug ")){
+  //     System.out.println("There seems to be a safe under the rug");
+  //   }
+  //   if (item.toLowerCase().contains("inspect bookcase ")){
+  //     System.out.println("There is a safe on one of the shelves of the bookcase. You need a key to open the safe.");
+  //   }
+  //   if (item.toLowerCase().contains("inspect desk ")){
+  //     System.out.println("There is a lamp and a computer on the desk. Next to the desk there is a trashcan.");
+  //   }
+  //   if (item.toLowerCase().contains("inspect pin-pad ")){
+  //     System.out.println("Find code");
+  //   }
+  //   if (item.toLowerCase().contains("inspect window ")){
+  //     System.out.println("You have fallen out of the window.");
+  //     endGame(false);
+  //   }
+  // }
   
   // private static void addItem(Item b) {
   //   System.out.println("Adding item...");  

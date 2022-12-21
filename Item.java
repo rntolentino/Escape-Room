@@ -67,6 +67,6 @@
 public void itemtype
 This method will allow us to distinguish between furniture items and technology. Currently unsure on how to make this work or if it makes sense to implement this. 
  **/ 
-}
+// }
 
  
