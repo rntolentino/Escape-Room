@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-import java.awt.Point;//Think we should just import point to make the coords situation easier (hhttp://www.java2s.com/Tutorial/Java/0261__2D-Graphics/Pointclass.htm)
+import java.awt.Point;//Think we should just import point to make the coords situation easier (http://www.java2s.com/Tutorial/Java/0261__2D-Graphics/Pointclass.htm)
 
 public class Furniture {
   public String name;  // can make private and use accessors and manipulators y

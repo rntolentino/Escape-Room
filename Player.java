@@ -21,13 +21,12 @@ public class Player {
   * Constructor 
   */
 
-  public Player (String name){
+  public Player (String name, Point point){
     this.name = name;
-    // this.locationX = 0 ;
-    // this.locationY= 0 ;
     this.location = new Point(0, 0);
     
   }
+
   // Accessors & Manipulators 
   /**
    * Sets the name 
@@ -73,11 +72,6 @@ public class Player {
      
   }
 
-  public Point getLocation(){
-    return location;
-  }
-
-
   /**
    * Allows user to use things in their inventory
    * @param item The item in question
@@ -91,12 +85,15 @@ public class Player {
   /**
    * Allows player to walk based on direction given
    * @param direction Direction that player wants to walk in. 
+   * @return 
    * @return A boolean, true signifies Player has moved
    */
-  public void walk(String direction){
+  public Point walk(String direction){
     if (direction.toLowerCase().contains("walk north") || direction.toLowerCase().contains("north")){
       // this.locationY +=1;
       System.out.println("walking north");
+      this.location.x = 0;
+      this.location.y = 3;
       Furniture door = new Furniture("door", new Point(0,3));
       door.location();
 
@@ -105,6 +102,8 @@ public class Player {
     if (direction.toLowerCase().contains( "walk south")|| direction.toLowerCase().contains("south")){
       // this.locationY -=1;
       System.out.println("walking south");
+      this.location.x = 0;
+      this.location.y = -3;
       Furniture bookcase = new Furniture("bookcase", new Point(0,-3));
       bookcase.location();
       //return(true);
@@ -112,23 +111,30 @@ public class Player {
     if (direction.toLowerCase().contains("walk west") || direction.toLowerCase().contains("west")){
       // this.locationX -=1;
       System.out.println("walking west");
+      this.location.x = -3;
+      this.location.y = 0;
       Furniture desk = new Furniture("desk", new Point(-3,0));
       desk.location();
-  
       //return(true);
     }
     if (direction.toLowerCase().contains("walk east") || direction.toLowerCase().contains("east")){
       // this.locationX += 1;
       System.out.println("walking east");
+      this.location.x = 3;
+      this.location.y = 0;
       Furniture window = new Furniture("window", new Point(3,0));
+
       window.location();
       //return(true);
     }
-    // else if (direction.toLowerCase().contains("walk") ){
-    //   System.out.println("Give a valid direction");
-    //   //return (false);
-    // }
+    System.out.println("The player is at " + this.location);
+    return this.location;
   }
+
+  public Point getLocation(){
+    return this.location;
+  }
+
 
   /**
    * Re-sets the attributes, basically gives default values
@@ -142,7 +148,7 @@ public class Player {
 
   // Main
   public static void main(String[]args){
-    Player pet  = new Player("Jochy");
+    Player pet  = new Player("Jochy", new Point(0, 0));
     System.out.println(pet);
     pet.grab("star");
     pet.grab("banana");

@@ -11,9 +11,21 @@ public class EscapeRoom {
   Scanner user_input = new Scanner(System.in);
 
   private Player user;
+  private static Point userPoint;
+  private Point northPoint;
+  private Point southPoint;
+  private Point eastPoint;
+  private Point westPoint;
+
   private Furniture rug;
   private Furniture door;
   private Furniture desk;
+  private Furniture window;
+  private Furniture bookcase;
+  private Furniture computer;
+  private Furniture trashCan;
+  private Furniture lamp;
+
   boolean stillPlaying = true;
   String user_response = "";
   private int north, south, east, west;
@@ -24,15 +36,27 @@ public class EscapeRoom {
   */
   public EscapeRoom(){
     this.name = null;
-    this.user = EscapeRoom.addPlayer(new Player (this.name)); //Creating instance of player in EscapeRoom
-    this.rug = EscapeRoom.addFurniture(new Furniture("rug", new Point(0,0))); //Creating instance of rug in EscapeRoom
+    this.userPoint = new Point(0, 0);
+    this.westPoint = new Point(-3, 0);
+
+    //Creating instance of player in EscapeRoom
+    this.user = EscapeRoom.addPlayer(new Player (this.name, this.userPoint)); 
+
+    //Creating instance of all furniture in EscapeRoom
+    this.rug = EscapeRoom.addFurniture(new Furniture("rug", new Point(0,0))); 
     this.door= EscapeRoom.addFurniture(new Furniture("door", new Point(0,3)));
     this.desk= EscapeRoom.addFurniture( new Furniture("desk", new Point(-3,0)));
+    this.desk= EscapeRoom.addFurniture( new Furniture("window", new Point(3,0)));
+    this.desk= EscapeRoom.addFurniture( new Furniture("bookcase", new Point(0,-3)));
+    this.desk= EscapeRoom.addFurniture( new Furniture("computer", new Point(-3,0)));
+    this.desk= EscapeRoom.addFurniture( new Furniture("trashcan", new Point(-3,0)));
+    this.desk= EscapeRoom.addFurniture( new Furniture("lamp", this.westPoint));
+
+    //Dimensions of the room 
     this.north = 3;
     this.south = -3;
     this.east = 3;
     this.west = -3;
-
   }
 
   public void startGame() {
@@ -50,19 +74,27 @@ public class EscapeRoom {
   public void gameLoop() {
     do {
       // System.out.println("You are still playing. Follow the instructions if you want to win/lose...");
+      System.out.println("The player is at " + this.userPoint);
       String response = user_input.nextLine();  
       if(response.toLowerCase().contains("walk")){
-        user.walk(response);
-        
-        
+        EscapeRoom.setLocation(user.walk(response));
+        // this.userPoint = location;
       }
+
       if (response.toLowerCase().contains("reset")){
         resetGame(response);
       }
 
       if(response.toLowerCase().contains("inspect")){
         if (response.toLowerCase().contains("inspect lamp")){
-          System.out.println("There is a paper under the lamp");
+          if (userPoint.equals(westPoint)){
+            // System.out.println("The player is at " + this.userPoint);
+            // System.out.println("The lamp it at " + this.userPoint);
+            System.out.println("There is a paper under the lamp");
+          }
+          else{
+            System.out.println("You are not close enough to the lamp");
+          }
         } 
         if (response.toLowerCase().contains("inspect computer")){
           System.out.println("There is a login screen");
@@ -133,8 +165,8 @@ public class EscapeRoom {
 
 
 
-  public Point getLocation(){
-    return (this.getLocation());
+  public static Point setLocation(Point newPoint){
+    return userPoint = newPoint;
   }
   
   private static Player addPlayer(Player p) {
@@ -146,20 +178,27 @@ public class EscapeRoom {
 
   private static Furniture addFurniture(Furniture f) {
     System.out.println("Adding furniture...");
-    Furniture user = f;
+    Furniture rug = f;
     f.getName();
     f.getLocation();
-    return user; 
+    return f; 
   }
 
   public void stores (String item){
-    if (item.toLowerCase().contains("inspect lamp")){
-      System.out.println("There is a paper under the lamp");
+    if (item.toLowerCase().contains("inspect lamp ")){
+      if (userPoint.equals(westPoint)){
+        System.out.println("The player is at " + EscapeRoom.userPoint);
+        System.out.println("The lamp it at " + this.westPoint);
+        System.out.println("There is a paper under the lamp");
+      }
+      else{
+        System.out.println("You are not close enough to the lamp");
+      }
     } 
-    if (item.toLowerCase().contains("inspect computer")){
+    if (item.toLowerCase().contains("inspect computer ")){
       System.out.println("There is a login screen");
     }
-    if (item.toLowerCase().contains("inspect trashcan")){
+    if (item.toLowerCase().contains("inspect trashcan ")){
       System.out.println("There is a thumbdrive inside the trashcan");
     }
     if (item.toLowerCase().contains("inspect rug ")){
