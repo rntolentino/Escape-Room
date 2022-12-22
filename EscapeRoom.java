@@ -17,6 +17,7 @@ public class EscapeRoom {
   public String name;
   Scanner user_input = new Scanner(System.in);
 
+
   private Player user;
   private static Point userPoint;
   private Point northPoint;
@@ -37,6 +38,7 @@ public class EscapeRoom {
 
   boolean stillPlaying = true;
   Boolean exit = false;
+  boolean command;
   String user_response = " ";
   private int north, south, east, west;
 
@@ -108,23 +110,27 @@ public class EscapeRoom {
    * inspect items and furniture. Allows the user to grab and use clues. 
    * Sets the stopping conditions for the game
   */
-  public void gameLoop() {
+  public void gameLoop(){
     System.out.println(" ");  
 
     do {
       // System.out.println("The player is at " + this.userPoint);
+      command = false;
       String response = user_input.nextLine();  
       if(response.toLowerCase().contains("walk") || response.toLowerCase().contains("go")){
         EscapeRoom.setLocation(user.walk(response));
+        command = true;
       }
 
       if(response.toLowerCase().contains("reset")){
         resetGame(response);
+        command = true;
       }
 
       if(response.toLowerCase().contains("end game") || response.toLowerCase().contains("lose")){
         this.exit = false;
         this.stillPlaying = false;
+        command = true;
       }
 
       //Inspect
@@ -228,6 +234,7 @@ public class EscapeRoom {
             System.out.println("You are not close enough to inspect the window. Get closer :)");
           }
         }
+        command = true;
       }
         //grab
       if(response.toLowerCase().contains("grab")){
@@ -247,45 +254,78 @@ public class EscapeRoom {
           user.grab("Post-it that has a phrase written on it. The phrase says password: iguessyoufoundme");
           System.out.println(" ");
         }
+        command = true;
       }
 
         //use
       if(response.toLowerCase().contains("use")){
-        if (response.toLowerCase().contains("use thumbdrive") || response.toLowerCase().contains("use thumb drive") ){
+        if (response.toLowerCase().contains("use thumbdrive") || response.toLowerCase().contains("use thumb drive")){
           if(userPoint.equals(westPoint)){
             user.use("Thumb drive has a file on it. On the file is a pin ");
+            System.out.println(" ");
+          }
+          else{
+            System.out.println("You can use that here, silly!");
             System.out.println(" ");
           }
         }
         if (response.toLowerCase().contains("use key")){
           if(userPoint.equals(southPoint)){
-            user.use("Key for safe.");
-            System.out.println("There is a post-it in the safe.");
+            user.use("Key for chesk.");
+            System.out.println("There is a post-it in the chest.");
+            System.out.println(" ");
+          }
+          else{
+            System.out.println("You can use that here, silly!");
             System.out.println(" ");
           }
         }
-        if (response.toLowerCase().contains("use pin-pad") || response.toLowerCase().contains("use pinpad") || response.toLowerCase().contains("use pin pad") ){
+        if (response.toLowerCase().contains("use door")){
+          if(userPoint.equals(northPoint)){
+            if(exit == false){
+              System.out.println("The door is locked!");
+              System.out.println(" ");
+            }
+            else if(exit == true){
+              stillPlaying = false;
+              endGame(exit);
+            }
+          }
+          else{
+            System.out.println("You are not close enough to use the door");
+            System.out.println(" ");
+
+          }
+        }
+        if (response.toLowerCase().contains("use pin-pad") || response.toLowerCase().contains("use pinpad") || response.toLowerCase().contains("use pin pad")){
           if(userPoint.equals(northPoint)){
             System.out.println("Insert code:");
-            System.out.println(" ");
+
             if(response.toLowerCase().contains("1202")){
+              System.out.println("CORRECT!");
+              System.out.println("The door made a clicking sound");
               exit = true;
-              stillPlaying = false;
             }
             else{
               System.out.println("INCORRECT");
             }
           }   
+          else{
+            System.out.println("You are not close enough to use the pin-pad.");
+          }
         }
-        else{
-          System.out.println("You are not close enough to use the pin-pad.");
-        }
+        command = true;
+      }
+      else if (command == false){
+        System.out.println("Invalid input! Try checking the cheatsheet for help!");
       }
 
-        //Stopping condition for game loop 
-    } while (stillPlaying);
+      
+
+      //Stopping condition for game loop
+    }while (stillPlaying);
       endGame(exit);
-    }
+  }
 
 
 
