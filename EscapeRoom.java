@@ -145,7 +145,7 @@ public class EscapeRoom {
         } 
         if (response.toLowerCase().contains("inspect computer")){
           if (userPoint.equals(westPoint)){
-            System.out.println("There is a login screen");
+            System.out.println("The computer is locked and is asking for a login");
           }
           else{
             System.out.println("You are not close enough to inspect the computer.");
