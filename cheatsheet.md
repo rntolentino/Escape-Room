@@ -32,7 +32,7 @@ To reset the game, say ---> "reset"
 To add an item/clue to your inventory, say ---> "grab" 
 To remove/drop an item from your inventory, say ---> "drop" 
 To use something in the inventory, say "use"
-HINTS *** insert thumbdrive***
+HINTS *** use thumbdrive***
 
 /////////////////////////////////////////////////////////////////
                     Take a closer look: 
