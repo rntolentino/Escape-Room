@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-import java.awt.Point;//Think we should just import point to make the coords situation easier (http://www.java2s.com/Tutorial/Java/0261__2D-Graphics/Pointclass.htm)
+import java.awt.Point;//(http://www.java2s.com/Tutorial/Java/0261__2D-Graphics/Pointclass.htm)
 /**
  * The furniture class allows the player to locate the furniture and construct furniture. The method locate provides
  * description of what the user sees once they walk in a certain direction.
@@ -85,48 +85,5 @@ public class Furniture {
     }
     System.out.println( " ");
   }
-
-  public static void main(String args[]){
-    // Furniture desk = new Furniture("desk");
-    // desk.location();
-    // desk.stores("inspect lamp");
-    // System.out.println("done 1 ");
-
-    // Furniture window = new Furniture("window");
-    // window.location();
-    // System.out.println("done 2 ");
-
-    // Furniture bookcase = new Furniture("bookcase");
-    // bookcase.location();
-    // bookcase.stores("inspect bookcase");
-    // System.out.println("done 3 ");
-
-    // Furniture door = new Furniture("door");
-    // door.location();
-    // System.out.println("done 4 ");
-
-    // Furniture pinpad = new Furniture("pin-pad");
-    // pinpad.location();
-    // System.out.println("done 5 ");
-
-    // Furniture computer = new Furniture("computer");
-    // computer.location();
-    // computer.stores("inspect computer");
-    // System.out.println("done 6 ");
-
-    // Furniture trashcan = new Furniture("trashcan");
-    // trashcan.location();
-    // System.out.println("done 7 ");
-
-    // Furniture lamp = new Furniture("lamp");
-    // lamp.location();
-    // lamp.stores("inspect lamp");
-    // System.out.println("done 8 ");
-
-    // Furniture rug = new Furniture("rug", new Point(0, 0));
-    // rug.location();
-    // rug.stores("inspect rug");
-    // System.out.println("done 9");
-
-  }
 }
+

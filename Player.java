@@ -13,7 +13,7 @@ public class Player {
   // Attributes
   public String name;  // can make private and use accessors and manipulators y
   private Point location;
-  private ArrayList <String> inventory = new ArrayList<String>();
+  private ArrayList <String> inventory;
  
   /**
   * Constructor 
@@ -22,6 +22,7 @@ public class Player {
   public Player (String name, Point point){
     this.name = name;
     this.location = new Point(0, 0);
+    this.inventory = new ArrayList<String>();
     
   }
 
@@ -61,7 +62,7 @@ public class Player {
     System.out.println(" ");
     
     this.inventory.add(item);
-    System.out.println("Your inventory"+this.inventory);
+    System.out.println("Your inventory"+ this.inventory);
   }
 
   /**
@@ -75,6 +76,11 @@ public class Player {
     System.out.println(" ");
     return (item);
      
+  }
+
+  public boolean checkInventory(String item){
+    boolean ans = inventory.contains(item);
+    return ans;
   }
 
   /**

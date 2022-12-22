@@ -17,7 +17,7 @@ public class EscapeRoom {
   public String name;
   Scanner user_input = new Scanner(System.in);
 
-
+  //
   private Player user;
   private static Point userPoint;
   private Point northPoint;
@@ -26,7 +26,7 @@ public class EscapeRoom {
   private Point westPoint;
   private Point centerPoint;
 
-
+  //
   private Furniture rug;
   private Furniture door;
   private Furniture desk;
@@ -36,6 +36,7 @@ public class EscapeRoom {
   private Furniture trashCan;
   private Furniture lamp;
 
+  //
   boolean stillPlaying = true;
   Boolean exit = false;
   boolean command;
@@ -75,7 +76,6 @@ public class EscapeRoom {
     this.west = -3;
   }
 
-
   
   //Manipulator 
   /**
@@ -85,7 +85,6 @@ public class EscapeRoom {
   public static Point setLocation(Point newPoint){
     return userPoint = newPoint;
   }
-
 
 
   /**
@@ -182,7 +181,15 @@ public class EscapeRoom {
           else{
             System.out.println("You are not close enough to inspect the rug.");
           }
-        } 
+        }
+        // if (response.toLowerCase().contains("inspect box")){
+        //   if (userPoint.equals(centerPoint)){
+        //     System.out.println("Inside the box is ");
+        //   }
+        //   else{
+        //     System.out.println("You are not close enough to inspect the box.");
+        //   }
+        // } 
         if (response.toLowerCase().contains("inspect bookcase") || response.toLowerCase().contains("inspect book case")){
           if(userPoint.equals(southPoint)){
             System.out.println("There is a small chest on one of the shelves of the bookcase.");
@@ -258,20 +265,31 @@ public class EscapeRoom {
         //use
       if(response.toLowerCase().contains("use")){
         if (response.toLowerCase().contains("use thumbdrive") || response.toLowerCase().contains("use thumb drive")){
-          if(userPoint.equals(westPoint)){
-            user.use("Thumb drive has a file on it. On the file is a pin ");
+          if (user.checkInventory(response) == true){
+            if(userPoint.equals(westPoint)){
+              user.use("Thumb drive has a file on it. On the file is a pin ");
+            }
+            else{
+              System.out.println("You can use that here, silly!");
+            }
           }
           else{
-            System.out.println("You can use that here, silly!");
+            System.out.println("You don't have that item in your inventory, silly");
           }
+    
         }
         if (response.toLowerCase().contains("use key")){
-          if(userPoint.equals(southPoint)){
-            user.use("Key for chesk.");
-            System.out.println("There is a post-it in the chest.");
+          if (user.checkInventory(response) == true){
+            if(userPoint.equals(southPoint)){
+              user.use("Key for chesk.");
+              System.out.println("There is a post-it in the chest.");
+            }
+            else{
+              System.out.println("You can use that here, silly!");
+            }
           }
           else{
-            System.out.println("You can use that here, silly!");
+            System.out.println("You don't have that item in your inventory, silly");
           }
         }
         if (response.toLowerCase().contains("use door")){
