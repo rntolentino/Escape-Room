@@ -119,20 +119,17 @@ public class EscapeRoom {
       String response = user_input.nextLine();  
       if(response.toLowerCase().contains("walk") || response.toLowerCase().contains("go")){
         EscapeRoom.setLocation(user.walk(response));
-        System.out.println(" ");
         command = true;
       }
 
       if(response.toLowerCase().contains("reset")){
         resetGame(response);
-        System.out.println(" ");
         command = true;
       }
 
       if(response.toLowerCase().contains("end game") || response.toLowerCase().contains("lose")){
         this.exit = false;
         this.stillPlaying = false;
-        System.out.println(" ");
         command = true;
       }
 
@@ -242,7 +239,6 @@ public class EscapeRoom {
         if (response.toLowerCase().contains("grab post-it")){
           user.grab("Post-it that has" + '\u201C'+ " password: iguessyoufoundme " +'\u201C' +"written on it");
         }
-        System.out.println(" ");
         command = true;
       }
 

@@ -15,6 +15,7 @@ To move NORTH of where you are, say ---> "walk north"
 To move EAST of where you are, say ---> "walk east" 
 To move SOUTH of where you are, say ---> "walk south"  
 To move WEST of where you are, say ---> "walk west"  
+To move CENTER of where you are, say ---> "walk center"  
 /////////////////////////////////////////////////////////////////
                         
 /////////////////////////////////////////////////////////////////
