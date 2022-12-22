@@ -59,6 +59,7 @@ public class Player {
     System.out.println("You have grabbed the " + item);
     System.out.println("It is being added to your inventory");
     System.out.println(" ");
+    
     this.inventory.add(item);
     System.out.println("Your inventory"+this.inventory);
   }
@@ -96,7 +97,7 @@ public class Player {
   */
   public Point walk(String direction){
     if (direction.toLowerCase().contains("walk north") || direction.toLowerCase().contains("north")){
-      System.out.println("walking north");
+      System.out.println("walking to the north...");
       System.out.println(" ");
       this.location.x = 0;
       this.location.y = 3;
@@ -104,7 +105,7 @@ public class Player {
       door.location();
     }
     if (direction.toLowerCase().contains( "walk south")|| direction.toLowerCase().contains("south")){
-      System.out.println("walking south");
+      System.out.println("walking to the south...");
       System.out.println(" ");
       this.location.x = 0;
       this.location.y = -3;
@@ -112,7 +113,7 @@ public class Player {
       bookcase.location();
     } 
     if (direction.toLowerCase().contains("walk west") || direction.toLowerCase().contains("west")){
-      System.out.println("walking west");
+      System.out.println("walking to the west...");
       System.out.println(" ");
       this.location.x = -3;
       this.location.y = 0;
@@ -120,12 +121,20 @@ public class Player {
       desk.location();
     }
     if (direction.toLowerCase().contains("walk east") || direction.toLowerCase().contains("east")){
-      System.out.println("walking east");
+      System.out.println("walking to the east...");
       System.out.println(" ");
       this.location.x = 3;
       this.location.y = 0;
       Furniture window = new Furniture("window", new Point(3,0));
       window.location();
+    }
+    if (direction.toLowerCase().contains("walk center") || direction.toLowerCase().contains("walk middle") || direction.toLowerCase().contains("center")|| direction.toLowerCase().contains("middle")){
+      System.out.println("walking to the center...");
+      System.out.println(" ");
+      this.location.x = 0;
+      this.location.y = 0;
+      Furniture rug = new Furniture("rug", new Point(0,0));
+      rug.location();
     }
     return this.location;
   }
@@ -137,7 +146,7 @@ public class Player {
    */
   public void undo(){
     this.name = ("Steve");
-
+    this.location
   }
     
 
