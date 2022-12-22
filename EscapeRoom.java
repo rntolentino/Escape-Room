@@ -226,7 +226,6 @@ public class EscapeRoom {
         if (response.toLowerCase().contains("inspect window")){
           if(userPoint.equals(eastPoint)){
             System.out.println("You have fallen out of the window!");
-            endGame(false);   
             stillPlaying = false;
           }
           else{
@@ -236,6 +235,7 @@ public class EscapeRoom {
         System.out.println(" ");
         command = true;
       }
+      
         //grab
       if(response.toLowerCase().contains("grab")){
         if (response.toLowerCase().contains("grab paper")){
@@ -363,12 +363,12 @@ public class EscapeRoom {
    * @param boolean Tells whether the player has exited successfully  
   */
   public void endGame(boolean exit) {
-    if (exit = true){
+    if (exit == true){
       user_input.close();
       System.out.println("You have successfully escaped!"); 
-      System.out.println("GAME OVER");
+      System.out.println("CONGRATULATIONS!");
     }
-    if (exit = false){
+    if (exit == false){
       user_input.close();
       System.out.println("You have failed to escape :("); 
       System.out.println("GAME OVER");
