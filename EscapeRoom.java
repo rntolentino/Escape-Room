@@ -16,6 +16,8 @@ public class EscapeRoom {
   private Point southPoint;
   private Point eastPoint;
   private Point westPoint;
+  private Point centerPoint;
+
 
   private Furniture rug;
   private Furniture door;
@@ -44,13 +46,13 @@ public class EscapeRoom {
 
     //Creating instance of all furniture in EscapeRoom
     this.rug = EscapeRoom.addFurniture(new Furniture("rug", new Point(0,0))); 
-    this.door= EscapeRoom.addFurniture(new Furniture("door", new Point(0,3)));
-    this.desk= EscapeRoom.addFurniture( new Furniture("desk", new Point(-3,0)));
-    this.desk= EscapeRoom.addFurniture( new Furniture("window", new Point(3,0)));
-    this.desk= EscapeRoom.addFurniture( new Furniture("bookcase", new Point(0,-3)));
-    this.desk= EscapeRoom.addFurniture( new Furniture("computer", new Point(-3,0)));
-    this.desk= EscapeRoom.addFurniture( new Furniture("trashcan", new Point(-3,0)));
-    this.desk= EscapeRoom.addFurniture( new Furniture("lamp", this.westPoint));
+    this.door = EscapeRoom.addFurniture(new Furniture("door", new Point(0,3)));
+    this.desk = EscapeRoom.addFurniture( new Furniture("desk", new Point(-3,0)));
+    this.window = EscapeRoom.addFurniture( new Furniture("window", new Point(3,0)));
+    this.bookcase = EscapeRoom.addFurniture( new Furniture("bookcase", new Point(0,-3)));
+    this.computer = EscapeRoom.addFurniture( new Furniture("computer", new Point(-3,0)));
+    this.trashCan = EscapeRoom.addFurniture( new Furniture("trashcan", new Point(-3,0)));
+    this.lamp = EscapeRoom.addFurniture( new Furniture("lamp", this.westPoint));
 
     //Dimensions of the room 
     this.north = 3;
@@ -84,6 +86,7 @@ public class EscapeRoom {
     System.out.println("Welcome to our Escape Room! What is you name?");
     this.name = user_input.nextLine(); 
     System.out.println("Hello, " + name);  
+    System.out.println(" ");  
     System.out.println("You are standing in the center of a room above a rug. There is a door to the north. A bookcase to the south. A window to the east. And a desk to the west."); 
     gameLoop();
   }
@@ -94,11 +97,12 @@ public class EscapeRoom {
    * Sets the stopping conditions for the game
   */
   public void gameLoop() {
+    System.out.println(" ");  
+
     do {
-      // System.out.println("You are still playing. Follow the instructions if you want to win/lose...");
-      System.out.println("The player is at " + this.userPoint);
+      // System.out.println("The player is at " + this.userPoint);
       String response = user_input.nextLine();  
-      if(response.toLowerCase().contains("walk")){
+      if(response.toLowerCase().contains("walk") || response.toLowerCase().contains("go")){
         EscapeRoom.setLocation(user.walk(response));
         // this.userPoint = location;
       }
@@ -110,50 +114,84 @@ public class EscapeRoom {
       if(response.toLowerCase().contains("inspect")){
         if (response.toLowerCase().contains("inspect lamp")){
           if (userPoint.equals(westPoint)){
-            // System.out.println("The player is at " + this.userPoint);
-            // System.out.println("The lamp it at " + this.userPoint);
             System.out.println("There is a paper under the lamp");
           }
           else{
-            System.out.println("You are not close enough to the lamp");
+            System.out.println("You are not close enough to inspect the lamp");
           }
         } 
         if (response.toLowerCase().contains("inspect computer")){
-          System.out.println("There is a login screen");
-          System.out.println("Input the username:");
-          do{
-            if(response.toLowerCase().contains("helloworld")){
-              System.out.println("Input the password:");
+          if (userPoint.equals(westPoint)){
+            System.out.println("There is a login screen");
+            System.out.println("Input the username:");
+            do{
+              if(response.toLowerCase().contains("helloworld")){
+                System.out.println("Input the password:");
+              }
               if (response.toLowerCase().contains("iguessyoufoundme")){
-              System.out.println("You are on the computer.");
+                System.out.println("You are on the computer.");
               }
               if (response.toLowerCase().contains("insert thumbdrive")){
                 System.out.println("The pin is 1202");
               }
+            }
+            while(response.toLowerCase().contains("helloworld"));
           }
-          }while(response.toLowerCase().contains("helloworld"));
-        }
+          else{
+            System.out.println("You are not close enough to inspect the computer.");
+          }
+        } 
         if (response.toLowerCase().contains("inspect trashcan")){
-          System.out.println("There is a thumbdrive inside the trashcan");
-        }
+          if (userPoint.equals(westPoint)){
+            System.out.println("There is a thumbdrive inside the trashcan.");
+          }
+          else{
+            System.out.println("You are not close enough to inspect the trashcan.");
+          }
+        } 
         if (response.toLowerCase().contains("inspect rug")){
-          System.out.println("There seems to be a loose board under it is a box. In the box is a key.");
-        }
+          if (userPoint.equals(centerPoint)){
+            System.out.println("There seems to be a loose board under it is a box.");
+            if(response.toLowerCase().contains("inspect box")){
+              System.out.println("In the box is a key.");
+            }
+          }
+          else{
+            System.out.println("You are not close enough to inspect the rug.");
+          }
+        } 
         if (response.toLowerCase().contains("inspect bookcase")){
-          System.out.println("There is a safe on one of the shelves of the bookcase. You need a key to open the safe.");
+          if(userPoint.equals(southPoint)){
+            System.out.println("There is a safe on one of the shelves of the bookcase. You need a key to open the safe.");
+          }
+          else{
+            System.out.println("You are not close enough to inspect the bookcase.");
+          }
         }
         if (response.toLowerCase().contains("inspect desk")){
-          System.out.println("There is a lamp and a computer on the desk. Next to the desk there is a trashcan.");
+          if(userPoint.equals(westPoint)){
+            System.out.println("There is a lamp and a computer on the desk. Next to the desk there is a trashcan.");
+          }
+          else{
+            System.out.println("You are not close enough to inspect the desk.");
+          }
         }
         if (response.toLowerCase().contains("inspect pin-pad")){
-          System.out.println("Insert code:");
-          if (response.toLowerCase().contains("1202")){
-            endGame(true);
+          if(userPoint.equals(northPoint)){
+            System.out.println("Insert code:");
+          }
+          else{
+            System.out.println("You are not close enough to inspect the pin-pad.");
           }
         }
         if (response.toLowerCase().contains("inspect window")){
-          System.out.println("You have fallen out of the window.");
-          endGame(false);
+          if(userPoint.equals(eastPoint)){
+            System.out.println("You have fallen out of the window!");
+            endGame(false);          
+          }
+          else{
+            System.out.println("You are not close enough to inspect the window. Get closer :)");
+          }
         }
       }
 
@@ -181,7 +219,21 @@ public class EscapeRoom {
           System.out.println("There is a post-it in the safe.");
   
         }
-     }
+        if (response.toLowerCase().contains("use pin-pad")){
+          if(userPoint.equals(northPoint)){
+            System.out.println("Insert code:");
+            if(response.toLowerCase().contains("1202")){
+              endGame(true);
+            }
+            else{
+              System.out.println("INCORRECT");
+            }
+          }   
+        }
+        else{
+          System.out.println("You are not close enough to use the pin-pad.");
+        }
+      }
 
       //Stopping condition for game loop 
       if (response.toLowerCase().contains("END GAME") || response.toLowerCase().contains("LOSE")){
@@ -189,10 +241,7 @@ public class EscapeRoom {
         endGame(stillPlaying);
       }
     } while (stillPlaying);
-
-
   }
-
 
 
   /**
@@ -208,8 +257,6 @@ public class EscapeRoom {
   }
 
 
-
-
   /**
    * Adds furniture to the room. Constructs furniture (calls on the constructor for furniture).
    * @param Furniture new instance of furniture 
@@ -219,7 +266,6 @@ public class EscapeRoom {
     System.out.println("Adding furniture...");
     Furniture rug = f;
     f.getName();
-    f.getLocation();
     return f; 
   }
 
@@ -259,15 +305,7 @@ public class EscapeRoom {
   /* main method (for testing) */
   public static void main(String[] args) {
     EscapeRoom room = new EscapeRoom();
-    // Furniture rug = new Furniture("rug", new Point(0,0));
-    // Furniture door = new Furniture("door");
-    // Furniture pinPad = new Furniture("pin-pad"); //Is this correct naming?
-    // Furniture desk = new Furniture("desk");
-    // Furniture window = new Furniture("window");
-    // Furniture bookcase = new Furniture("bookcase");
-    // Furniture computer = new Furniture("computer");
-    // Furniture trashcan = new Furniture("trashcan");
-    // Furniture lamp = new Furniture("lamp");
+
     
     room.startGame();
 
