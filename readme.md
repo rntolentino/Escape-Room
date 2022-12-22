@@ -1,8 +1,8 @@
 DELIVERABLES:
 - Your final codebase *** DONE***
-- Your revised annotated architecture diagram
+- Your revised annotated architecture diagram *** DONE***
 - Design justification (including a brief discussion of at least one alternative you considered)*** DONE***
-- A map of your game's layout (if applicable)
+- A map of your game's layout (if applicable) *** DONE***
 - cheatsheet.md *** DONE***
 - Completed rubric.md *** DONE***
 
