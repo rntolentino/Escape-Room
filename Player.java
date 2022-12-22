@@ -56,7 +56,9 @@ public class Player {
    * @param item The item grabbed 
    */
   public void grab(String item){
-    System.out.println("You have grabbed " + item +" it is being added to your inventory");
+    System.out.println("You have grabbed the " + item);
+    System.out.println("It is being added to your inventory");
+    System.out.println(" ");
     this.inventory.add(item);
     System.out.println("Your inventory"+this.inventory);
   }
@@ -69,6 +71,7 @@ public class Player {
   public String drop(String item){
     this.inventory.remove(item);
     System.out.println("You have dropped " + item );
+    System.out.println(" ");
     return (item);
      
   }
@@ -80,7 +83,7 @@ public class Player {
   public void use(String item){
     if (inventory.contains(item) == true){
       System.out.println("USED");
-
+      System.out.println(" ");
     }
   }
 
@@ -123,7 +126,6 @@ public class Player {
       this.location.y = 0;
       Furniture window = new Furniture("window", new Point(3,0));
       window.location();
-
     }
     return this.location;
   }

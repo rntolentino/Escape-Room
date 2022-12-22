@@ -210,6 +210,7 @@ public class EscapeRoom {
         if (response.toLowerCase().contains("inspect door")){
           if (userPoint.equals(northPoint)){
             System.out.println("The door is locked! How will you get out?");
+            System.out.println("There seems to be a pinpad next to the door");
           }
           else{
             System.out.println("You are not close enough to inspect the door");
@@ -218,7 +219,6 @@ public class EscapeRoom {
         if (response.toLowerCase().contains("inspect pin-pad") || response.toLowerCase().contains("inspect pinpad") || response.toLowerCase().contains("inspect pin pad")){
           if(userPoint.equals(northPoint)){
             System.out.println("The pin-pad seems to be connected to the door.");
-            System.out.println("Insert code:");
           }
           else{
             System.out.println("You are not close enough to inspect the pin-pad.");
@@ -234,26 +234,24 @@ public class EscapeRoom {
             System.out.println("You are not close enough to inspect the window. Get closer :)");
           }
         }
+        System.out.println(" ");
         command = true;
       }
         //grab
       if(response.toLowerCase().contains("grab")){
         if (response.toLowerCase().contains("grab paper")){
           user.grab("Paper that has a phrase written on it. The phrase says username: helloworld");
-          System.out.println(" ");
         }
         if (response.toLowerCase().contains("grab thumbdrive")){
           user.grab("Thumb drive has a file on it.");
-          System.out.println(" ");
         }
         if (response.toLowerCase().contains("grab key")){
           user.grab("Key for safe.");
-          System.out.println(" ");
         }
         if (response.toLowerCase().contains("grab post-it")){
           user.grab("Post-it that has a phrase written on it. The phrase says password: iguessyoufoundme");
-          System.out.println(" ");
         }
+        System.out.println(" ");
         command = true;
       }
 
@@ -262,29 +260,24 @@ public class EscapeRoom {
         if (response.toLowerCase().contains("use thumbdrive") || response.toLowerCase().contains("use thumb drive")){
           if(userPoint.equals(westPoint)){
             user.use("Thumb drive has a file on it. On the file is a pin ");
-            System.out.println(" ");
           }
           else{
             System.out.println("You can use that here, silly!");
-            System.out.println(" ");
           }
         }
         if (response.toLowerCase().contains("use key")){
           if(userPoint.equals(southPoint)){
             user.use("Key for chesk.");
             System.out.println("There is a post-it in the chest.");
-            System.out.println(" ");
           }
           else{
             System.out.println("You can use that here, silly!");
-            System.out.println(" ");
           }
         }
         if (response.toLowerCase().contains("use door")){
           if(userPoint.equals(northPoint)){
             if(exit == false){
               System.out.println("The door is locked!");
-              System.out.println(" ");
             }
             else if(exit == true){
               stillPlaying = false;
@@ -293,15 +286,13 @@ public class EscapeRoom {
           }
           else{
             System.out.println("You are not close enough to use the door");
-            System.out.println(" ");
-
           }
         }
         if (response.toLowerCase().contains("use pin-pad") || response.toLowerCase().contains("use pinpad") || response.toLowerCase().contains("use pin pad")){
           if(userPoint.equals(northPoint)){
             System.out.println("Insert code:");
-
-            if(response.toLowerCase().contains("1202")){
+            String passcode = user_input.nextLine();  
+            if(passcode.toLowerCase().contains("1202")){
               System.out.println("CORRECT!");
               System.out.println("The door made a clicking sound");
               exit = true;
@@ -314,10 +305,12 @@ public class EscapeRoom {
             System.out.println("You are not close enough to use the pin-pad.");
           }
         }
+        System.out.println(" ");
         command = true;
       }
       else if (command == false){
         System.out.println("Invalid input! Try checking the cheatsheet for help!");
+        System.out.println(" ");
       }
 
       
