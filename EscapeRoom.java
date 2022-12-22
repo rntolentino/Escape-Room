@@ -39,6 +39,7 @@ public class EscapeRoom {
   //
   boolean stillPlaying = true;
   Boolean exit = false;
+  boolean compStatus = false;
   boolean command;
   String user_response = " ";
   private int north, south, east, west;
@@ -145,19 +146,6 @@ public class EscapeRoom {
         if (response.toLowerCase().contains("inspect computer")){
           if (userPoint.equals(westPoint)){
             System.out.println("There is a login screen");
-            System.out.println("Input the username:");
-            do{
-              if(response.toLowerCase().contains("helloworld")){
-                System.out.println("Input the password:");
-              }
-              if (response.toLowerCase().contains("iguessyoufoundme")){
-                System.out.println("You are on the computer.");
-              }
-              if (response.toLowerCase().contains("insert thumbdrive")){
-                System.out.println("The pin is 1202");
-              }
-            }
-            while(response.toLowerCase().contains("helloworld"));
           }
           else{
             System.out.println("You are not close enough to inspect the computer.");
@@ -239,20 +227,17 @@ public class EscapeRoom {
         //grab
       if(response.toLowerCase().contains("grab")){
         if (response.toLowerCase().contains("grab paper")){
-          user.grab("Paper that has a phrase written on it. The phrase says username: helloworld");
-          System.out.println(" ");
+          user.grab("Paper that has" + '\u201C'+ " username: helloworld " +'\u201C' +"written on it");
         }
         if (response.toLowerCase().contains("grab thumbdrive")){
-          user.grab("Thumb drive has a file on it.");
-          System.out.println(" ");
+          user.grab("A thumbdrive, I wonder whats on it...");
         }
         if (response.toLowerCase().contains("grab key")){
           user.grab("Key for safe.");
           System.out.println(" ");
         }
         if (response.toLowerCase().contains("grab post-it")){
-          user.grab("Post-it that has a phrase written on it. The phrase says password: iguessyoufoundme");
-          System.out.println(" ");
+          user.grab("Post-it that has" + '\u201C'+ " password: iguessyoufoundme " +'\u201C' +"written on it");
         }
         command = true;
       }
@@ -260,13 +245,22 @@ public class EscapeRoom {
         //use
       if(response.toLowerCase().contains("use")){
         if (response.toLowerCase().contains("use thumbdrive") || response.toLowerCase().contains("use thumb drive")){
-          if(userPoint.equals(westPoint)){
-            user.use("Thumb drive has a file on it. On the file is a pin ");
+          if (user.checkInventory(response) == true){
+            if(userPoint.equals(westPoint)){
+              if (compStatus == true){
+                user.use("The thumbdrive has a file with a code on it: 1202");
+              }
+              else{
+                System.out.println("You have to unlock the computer first!");
+              }
+            }
+            else{
+              System.out.println("You can use that here, silly!");
+            }
           }
           else{
             System.out.println("You can use that here, silly!");
           }
-    
         }
         if (response.toLowerCase().contains("use key")){
           if(userPoint.equals(southPoint)){
@@ -311,18 +305,41 @@ public class EscapeRoom {
             System.out.println("You are not close enough to use the pin-pad.");
           }
         }
+        if (response.toLowerCase().contains("use computer")){
+          if(userPoint.equals(westPoint)){
+            System.out.println("There is a login screen");
+            System.out.println("Input the username:");
+            String passcode = user_input.nextLine();  
+            if(passcode.toLowerCase().contains("helloworld")){
+              System.out.println("Input the password:");
+              passcode = user_input.nextLine(); 
+              if(passcode.toLowerCase().contains("iguessyoufoundme")){
+                System.out.println("The computer unlocked!");
+                this.compStatus = true;
+              }
+              else{
+                System.out.println("Wrong password");
+              }
+            }
+            else{
+              System.out.println("Wrong username");
+            }
+          }   
+          else{
+            System.out.println("You are not close enough to use the computer");
+          }
+        }
+        System.out.println(" ");
         command = true;
       }
       else if (command == false){
         System.out.println("Invalid input! Try checking the cheatsheet for help!");
       }
-
-      
-
       //Stopping condition for game loop
     }while (stillPlaying);
       endGame(exit);
   }
+
 
 
   /**
