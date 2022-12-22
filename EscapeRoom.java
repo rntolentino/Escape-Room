@@ -174,9 +174,10 @@ public class EscapeRoom {
         if (response.toLowerCase().contains("inspect rug")){
           if (userPoint.equals(centerPoint)){
             System.out.println("There seems to be a loose board. Under the loose board is a box...");
-            if(response.toLowerCase().contains("inspect box")){
+            System.out.println("In the box is a key.");
+            /*if(response.toLowerCase().contains("inspect box")){
               System.out.println("In the box is a key.");
-            }
+            }*/
           }
           else{
             System.out.println("You are not close enough to inspect the rug.");
