@@ -145,8 +145,8 @@ public class Player {
    * Re-sets the attributes, basically gives default values
    */
   public void undo(){
-    this.name = ("Steve");
-    this.location
+    this.name = null;
+    this.location = new Point(0, 0);
   }
     
 
