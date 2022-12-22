@@ -182,14 +182,6 @@ public class EscapeRoom {
             System.out.println("You are not close enough to inspect the rug.");
           }
         }
-        // if (response.toLowerCase().contains("inspect box")){
-        //   if (userPoint.equals(centerPoint)){
-        //     System.out.println("Inside the box is ");
-        //   }
-        //   else{
-        //     System.out.println("You are not close enough to inspect the box.");
-        //   }
-        // } 
         if (response.toLowerCase().contains("inspect bookcase") || response.toLowerCase().contains("inspect book case")){
           if(userPoint.equals(southPoint)){
             System.out.println("There is a small chest on one of the shelves of the bookcase.");
@@ -337,8 +329,6 @@ public class EscapeRoom {
     }while (stillPlaying);
       endGame(exit);
   }
-
-
 
 
   /**
