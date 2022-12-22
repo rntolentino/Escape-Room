@@ -81,7 +81,7 @@ public class Furniture {
       System.out.println( "You are standing in front of a desk. On top of the desk is a lamp and computer. " );
     }
     if (this.name.toLowerCase().contains("rug")){
-      System.out.println( "You are standing in the center of the room. Under your feet there is a rug." );
+      System.out.println( "You are standing in the center of the room. Under your feet, there is a rug." );
     }
     System.out.println( " ");
   }

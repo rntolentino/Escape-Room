@@ -7,6 +7,7 @@ DESCRIPTION OF THE ROOM:
 At the center of a room there is a rug. There is a door to the north. A bookcase to the south. A window to the east and a desk to the west.
 
 HINT*** WE HAVE INCLUDED A DRAWING OF THE MAP ***
+HINT*** Perhaps the first thing you'd like to do is inspect something you're standing on? 
 /////////////////////////////////////////////////////////////////
                     Moving around the room: 
 
