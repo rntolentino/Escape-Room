@@ -1,7 +1,5 @@
 import java.util.Scanner;
-
 import javax.tools.DocumentationTool.Location;
-
 import java.awt.Point;
 /**
  * EscapeRoom is a class that creates the escape room. We create instances of the furniture class and 
@@ -16,7 +14,6 @@ import java.awt.Point;
 */
 public class EscapeRoom {
   //attributes
-  private Boolean exit;
   public String name;
   Scanner user_input = new Scanner(System.in);
 
@@ -39,7 +36,8 @@ public class EscapeRoom {
   private Furniture lamp;
 
   boolean stillPlaying = true;
-  String user_response = "";
+  Boolean exit = false;
+  String user_response = " ";
   private int north, south, east, west;
 
 
@@ -48,11 +46,15 @@ public class EscapeRoom {
   */
   public EscapeRoom(){
     this.name = null;
-    this.userPoint = new Point(0, 0);
+    EscapeRoom.userPoint = new Point(0, 0);
+    this.centerPoint = new Point(0,0);
+    this.northPoint = new Point(0,3);
+    this.southPoint = new Point(0, -3);
+    this.eastPoint = new Point(3, 0);
     this.westPoint = new Point(-3, 0);
 
     //Creating instance of player in EscapeRoom
-    this.user = EscapeRoom.addPlayer(new Player (this.name, this.userPoint)); 
+    this.user = EscapeRoom.addPlayer(new Player (this.name, EscapeRoom.userPoint)); 
 
     //Creating instance of all furniture in EscapeRoom
     this.rug = EscapeRoom.addFurniture(new Furniture("rug", new Point(0,0))); 
@@ -114,13 +116,18 @@ public class EscapeRoom {
       String response = user_input.nextLine();  
       if(response.toLowerCase().contains("walk") || response.toLowerCase().contains("go")){
         EscapeRoom.setLocation(user.walk(response));
-        // this.userPoint = location;
       }
 
-      if (response.toLowerCase().contains("reset")){
+      if(response.toLowerCase().contains("reset")){
         resetGame(response);
       }
 
+      if(response.toLowerCase().contains("end game") || response.toLowerCase().contains("lose")){
+        this.exit = false;
+        this.stillPlaying = false;
+      }
+
+      //Inspect
       if(response.toLowerCase().contains("inspect")){
         if (response.toLowerCase().contains("inspect lamp")){
           if (userPoint.equals(westPoint)){
@@ -151,7 +158,7 @@ public class EscapeRoom {
             System.out.println("You are not close enough to inspect the computer.");
           }
         } 
-        if (response.toLowerCase().contains("inspect trashcan")){
+        if (response.toLowerCase().contains("inspect trashcan") || response.toLowerCase().contains("inspect trash can")){
           if (userPoint.equals(westPoint)){
             System.out.println("There is a thumbdrive inside the trashcan.");
           }
@@ -170,9 +177,17 @@ public class EscapeRoom {
             System.out.println("You are not close enough to inspect the rug.");
           }
         } 
-        if (response.toLowerCase().contains("inspect bookcase")){
+        if (response.toLowerCase().contains("inspect bookcase") || response.toLowerCase().contains("inspect book case")){
           if(userPoint.equals(southPoint)){
-            System.out.println("There is a safe on one of the shelves of the bookcase. You need a key to open the safe.");
+            System.out.println("There is a small chest on one of the shelves of the bookcase.");
+          }
+          else{
+            System.out.println("You are not close enough to inspect the bookcase.");
+          }
+        }
+        if (response.toLowerCase().contains("inspect chest")){
+          if(userPoint.equals(southPoint)){
+            System.out.println("The chest is locked! It requires a key");
           }
           else{
             System.out.println("You are not close enough to inspect the bookcase.");
@@ -186,8 +201,17 @@ public class EscapeRoom {
             System.out.println("You are not close enough to inspect the desk.");
           }
         }
-        if (response.toLowerCase().contains("inspect pin-pad")){
+        if (response.toLowerCase().contains("inspect door")){
+          if (userPoint.equals(northPoint)){
+            System.out.println("The door is locked! How will you get out?");
+          }
+          else{
+            System.out.println("You are not close enough to inspect the door");
+          }
+        } 
+        if (response.toLowerCase().contains("inspect pin-pad") || response.toLowerCase().contains("inspect pinpad") || response.toLowerCase().contains("inspect pin pad")){
           if(userPoint.equals(northPoint)){
+            System.out.println("The pin-pad seems to be connected to the door.");
             System.out.println("Insert code:");
           }
           else{
@@ -197,43 +221,56 @@ public class EscapeRoom {
         if (response.toLowerCase().contains("inspect window")){
           if(userPoint.equals(eastPoint)){
             System.out.println("You have fallen out of the window!");
-            endGame(false);          
+            endGame(false);   
+            stillPlaying = false;
           }
           else{
             System.out.println("You are not close enough to inspect the window. Get closer :)");
           }
         }
       }
-
+        //grab
       if(response.toLowerCase().contains("grab")){
         if (response.toLowerCase().contains("grab paper")){
           user.grab("Paper that has a phrase written on it. The phrase says username: helloworld");
+          System.out.println(" ");
         }
         if (response.toLowerCase().contains("grab thumbdrive")){
           user.grab("Thumb drive has a file on it.");
+          System.out.println(" ");
         }
         if (response.toLowerCase().contains("grab key")){
           user.grab("Key for safe.");
+          System.out.println(" ");
         }
         if (response.toLowerCase().contains("grab post-it")){
           user.grab("Post-it that has a phrase written on it. The phrase says password: iguessyoufoundme");
+          System.out.println(" ");
         }
       }
 
+        //use
       if(response.toLowerCase().contains("use")){
-        if (response.toLowerCase().contains("use thumbdrive")){
-          user.use("Thumb drive has a file on it. On the file is a pin ");
+        if (response.toLowerCase().contains("use thumbdrive") || response.toLowerCase().contains("use thumb drive") ){
+          if(userPoint.equals(westPoint)){
+            user.use("Thumb drive has a file on it. On the file is a pin ");
+            System.out.println(" ");
+          }
         }
         if (response.toLowerCase().contains("use key")){
-          user.use("Key for safe.");
-          System.out.println("There is a post-it in the safe.");
-  
+          if(userPoint.equals(southPoint)){
+            user.use("Key for safe.");
+            System.out.println("There is a post-it in the safe.");
+            System.out.println(" ");
+          }
         }
-        if (response.toLowerCase().contains("use pin-pad")){
+        if (response.toLowerCase().contains("use pin-pad") || response.toLowerCase().contains("use pinpad") || response.toLowerCase().contains("use pin pad") ){
           if(userPoint.equals(northPoint)){
             System.out.println("Insert code:");
+            System.out.println(" ");
             if(response.toLowerCase().contains("1202")){
-              endGame(true);
+              exit = true;
+              stillPlaying = false;
             }
             else{
               System.out.println("INCORRECT");
@@ -245,13 +282,12 @@ public class EscapeRoom {
         }
       }
 
-      //Stopping condition for game loop 
-      if (response.toLowerCase().contains("END GAME") || response.toLowerCase().contains("LOSE")){
-        stillPlaying = false;
-        endGame(stillPlaying);
-      }
+        //Stopping condition for game loop 
     } while (stillPlaying);
-  }
+      endGame(exit);
+    }
+
+
 
 
   /**

@@ -11,10 +11,8 @@ import java.awt.Point;//Think we should just import point to make the coords sit
 public class Furniture {
   // attributes 
   public String name;  // can make private and use accessors and manipulators y
-  private String location_X;
-  private String location_Y;
+  private String compLocation;
   private Point location; 
-  private ArrayList<String> storage = new ArrayList<String>();
 
 
 
@@ -61,30 +59,31 @@ public class Furniture {
   */
   public void location(){
     if(this.name.toLowerCase().contains("door")|| this.name.toLowerCase().contains("pin-pad")){
-      this.location_X = "north" ;
-      this.location_Y= "0";
-      System.out.println( "You have hit the door that has a pin-pad on it , it is located in the "+location_X + " part of the room" );
+      this.compLocation = "north";
+      System.out.println( "You are in the " + compLocation + " part of the room");
+      System.out.println( "You are standing in front of the door");
     }
     if (this.name.toLowerCase().contains("bookcase") ){
-      this.location_X = "0" ;
-      this.location_Y= "south";
-      System.out.println( "You have hit the bookcase, it is located in the "+ location_Y + " part of the room" );
+      this.compLocation = "south";
+      System.out.println( "You are in the " + compLocation + " part of the room");
+      System.out.println( "You are standing in front of the bookcase." );
+
     }
     if (this.name.toLowerCase().contains("window")){
-      this.location_X = "east" ;
-      this.location_Y= "0";
-      System.out.println("You have hit the window, it is located in the "+ location_X + " part of the room" );
+      this.compLocation = "east" ;
+      System.out.println( "You are in the " + compLocation + " part of the room");
+      System.out.println("You are standing in front of an open window. Its very chilly!" );
 
     }
     if (this.name.toLowerCase().contains("lamp")|| this.name.toLowerCase().contains("desk")|| this.name.toLowerCase().contains("computer")|| this.name.toLowerCase().contains("trashcan")){
-      this.location_X = "0" ;
-      this.location_Y= "west";
-      System.out.println( "You have hit the desk that contains a lamp and computer. There is a trashcan, with a thumbdrive inside, next to the desk. These things are located in the "+location_Y + " part of the room" );
+      this.compLocation= "west";
+      System.out.println( "You are in the " + compLocation + " part of the room");
+      System.out.println( "You are standing in front of a desk. On top of the desk is a lamp and computer. " );
     }
     if (this.name.toLowerCase().contains("rug")){
-      // if (user.getLocation().equals(rug.getLocation()))
       System.out.println( "You are standing in the center of the room. Under your feet there is a rug." );
     }
+    System.out.println( " ");
   }
 
   public static void main(String args[]){

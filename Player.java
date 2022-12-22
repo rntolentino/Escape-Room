@@ -79,7 +79,8 @@ public class Player {
    */
   public void use(String item){
     if (inventory.contains(item) == true){
-      System.out.println("USED ");
+      System.out.println("USED");
+
     }
   }
 
@@ -93,37 +94,37 @@ public class Player {
   public Point walk(String direction){
     if (direction.toLowerCase().contains("walk north") || direction.toLowerCase().contains("north")){
       System.out.println("walking north");
+      System.out.println(" ");
       this.location.x = 0;
       this.location.y = 3;
       Furniture door = new Furniture("door", new Point(0,3));
       door.location();
-
     }
     if (direction.toLowerCase().contains( "walk south")|| direction.toLowerCase().contains("south")){
       System.out.println("walking south");
+      System.out.println(" ");
       this.location.x = 0;
       this.location.y = -3;
       Furniture bookcase = new Furniture("bookcase", new Point(0,-3));
       bookcase.location();
-
     } 
     if (direction.toLowerCase().contains("walk west") || direction.toLowerCase().contains("west")){
       System.out.println("walking west");
+      System.out.println(" ");
       this.location.x = -3;
       this.location.y = 0;
       Furniture desk = new Furniture("desk", new Point(-3,0));
       desk.location();
-
     }
     if (direction.toLowerCase().contains("walk east") || direction.toLowerCase().contains("east")){
       System.out.println("walking east");
+      System.out.println(" ");
       this.location.x = 3;
       this.location.y = 0;
       Furniture window = new Furniture("window", new Point(3,0));
       window.location();
 
     }
-    System.out.println("The player is at " + this.location);
     return this.location;
   }
   
@@ -145,7 +146,6 @@ public class Player {
     pet.grab("star");
     pet.grab("banana");
     pet.drop("banana");
-  
     pet.use("star");
     pet.walk("north");
     pet.undo();
