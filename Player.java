@@ -1,6 +1,14 @@
 import java.util.ArrayList;
 import java.awt.Point;
-
+/**
+ * Player class that constructs a player and gives it features that has drop items, grab items, use items and walk. 
+ * This class contains methods drop, grab, undo, use and walk. The method grab adds things to the players
+ * invetory, while drop does the opposite. The use method allows the player to use items. The walk method allows 
+ * the player to walk and creates instances of furnture using the furniture class. 
+ * @author Renee Owusu Poku
+ * @author Vanessa Pliego
+ * @author Rachel Tolentino
+*/
 public class Player { 
   // Attributes
   public String name;  // can make private and use accessors and manipulators y

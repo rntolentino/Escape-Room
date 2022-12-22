@@ -1,7 +1,13 @@
 import java.io.*;
 import java.util.*;
 import java.awt.Point;//Think we should just import point to make the coords situation easier (http://www.java2s.com/Tutorial/Java/0261__2D-Graphics/Pointclass.htm)
-
+/**
+ * The furniture class allows the player to locate the furniture and construct furniture. The method locate provides
+ * description of what the user sees once they walk in a certain direction.
+ * @author Renee Owusu Poku
+ * @author Vanessa Pliego
+ * @author Rachel Tolentino
+*/
 public class Furniture {
   // attributes 
   public String name;  // can make private and use accessors and manipulators y

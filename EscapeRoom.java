@@ -3,7 +3,17 @@ import java.util.Scanner;
 import javax.tools.DocumentationTool.Location;
 
 import java.awt.Point;
-  
+/**
+ * EscapeRoom is a class that creates the escape room. We create instances of the furniture class and 
+ * an instance of the player class, to create a player and teh furniture in the room. This class allows
+ * the player to use clues, grab clues and inspect furniture for clues. Contains methods that can reset 
+ * the game, start game and conduct the game . A method that starts the game by giving a description and allowing  the player to interact 
+ * with the map. A game loop method that allows the game to continure going. A method that ends the game
+ * based on whether the user flew out the window.  A method that adds furniture and another one that adds a player
+ * @author Renee Owusu Poku
+ * @author Vanessa Pliego
+ * @author Rachel Tolentino
+*/
 public class EscapeRoom {
   //attributes
   private Boolean exit;
